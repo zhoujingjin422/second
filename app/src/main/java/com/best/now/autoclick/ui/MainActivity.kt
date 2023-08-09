@@ -64,7 +64,6 @@ class MainActivity : BaseVMActivity() {
     @SuppressLint("SuspiciousIndentation")
     override fun initView() {
         binding.apply {
-
             ivSetting.setOnClickListener {
                 startActivity(Intent(this@MainActivity, SettingActivity::class.java))
             }

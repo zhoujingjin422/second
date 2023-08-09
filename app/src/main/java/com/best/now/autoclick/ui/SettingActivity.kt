@@ -27,13 +27,13 @@ class SettingActivity:BaseVMActivity() {
                     Constant.URL_PRIVACY_POLICY
                 )
             }
-            flService.setOnClickListener {
-                WebActivity.startActivity(
-                    this@SettingActivity,
-                    "Terms of Service",
-                    Constant.URL_TERMS_OF_USE
-                )
-            }
+//            flService.setOnClickListener {
+//                WebActivity.startActivity(
+//                    this@SettingActivity,
+//                    "Terms of Service",
+//                    Constant.URL_TERMS_OF_USE
+//                )
+//            }
             setSupportActionBar(toolBar)
             toolBar.setNavigationOnClickListener { finish() }
         }

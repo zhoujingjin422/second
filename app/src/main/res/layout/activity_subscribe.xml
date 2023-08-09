@@ -8,13 +8,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/sub_back">
 
         <ImageView
+            android:id="@+id/iv_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             android:src="@drawable/sub_top_back"
+            android:layout_marginTop="84dp"
             android:scaleType="centerCrop"/>
         <ImageView
             android:id="@+id/iv_close"
@@ -35,7 +38,7 @@
             android:text="Resume Purchase"
             android:layout_marginStart="23dp"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
@@ -47,20 +50,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/sub_top_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_sub_title"
-            android:layout_marginTop="13dp"
-            android:layout_marginStart="20dp"/>
+            app:layout_constraintStart_toStartOf="@id/iv_top"
+            app:layout_constraintTop_toTopOf="@id/iv_top"
+            app:layout_constraintBottom_toBottomOf="@id/iv_top"
+            android:layout_marginStart="35dp"/>
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/iv_word"
+            app:layout_constraintTop_toBottomOf="@id/iv_top"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="16dp"
-            android:layout_marginStart="9dp"
-            android:layout_marginEnd="9dp"
             app:cardElevation="2dp"
             app:cardCornerRadius="8dp"
             app:cardBackgroundColor="@color/white">
@@ -103,7 +104,7 @@
                                     android:textColor="@color/black"
                                     android:textStyle="bold"
                                     android:textSize="15sp"
-                                    android:text="Ross"/>
+                                    android:text="Lily"/>
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -123,62 +124,7 @@
                                 android:textColor="@color/black"
                                 android:textSize="12sp"
                                 android:layout_toEndOf="@id/iv_women"
-                                android:text="Professional translation software, really easy to use, very convenient, and free to use, highly recommended" />
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:cardBackgroundColor="#F0F9F7"
-                        app:cardCornerRadius="8dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginTop="16dp"
-                        app:contentPadding="14dp">
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <ImageView
-                                android:id="@+id/iv_man"
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:scaleType="centerCrop"
-                                android:src="@mipmap/icon_man"/>
-                            <FrameLayout
-                                android:id="@+id/ll_man"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="6dp"
-                                android:layout_toEndOf="@id/iv_man">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/black"
-                                    android:textStyle="bold"
-                                    android:textSize="15sp"
-                                    android:text="Carol"/>
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@mipmap/icon_star"
-                                    android:layout_marginEnd="7dp"
-                                    android:layout_gravity="end|center_vertical"
-                                    android:layout_marginStart="10dp"/>
-                            </FrameLayout>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/ll_man"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginEnd="7dp"
-                                android:textColor="@color/black"
-                                android:textSize="12sp"
-                                android:layout_toEndOf="@id/iv_man"
-                                android:text="Since I downloaded this app, I have saved a lot of trouble and it is also very convenient. I highly recommend it~" />
+                                android:text="Comprehensive and rich functions, easy to read and export PDF, recommended for use" />
                         </RelativeLayout>
                     </androidx.cardview.widget.CardView>
                     <ImageView
@@ -192,11 +138,19 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Please choose a VIP"
+                        android:text="Try us for 7 days-free!"
                         android:textSize="16sp"
                         android:textColor="@color/black"
-                        android:layout_marginStart="22dp"
-                        android:layout_marginTop="14dp"/>
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp"/>
+                   <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No commitment. Cancel anytime."
+                        android:textSize="12sp"
+                        android:textColor="#66333333"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"/>
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -205,7 +159,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_marginBottom="20dp"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="34dp"
+                        android:layout_marginTop="7dp"
                         android:layout_marginEnd="20dp">
                         <ImageView
                             android:id="@+id/next"
