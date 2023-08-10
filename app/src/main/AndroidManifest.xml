@@ -56,6 +56,7 @@
         <activity android:name=".ui.WebPlayActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.WebPlayPianoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.RecordActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.ShowHowActivity" android:screenOrientation="portrait"/>
         <service android:name="com.zlw.main.recorderlib.recorder.RecordService" />
     </application>
     <!--适配华为（huawei）刘海屏-->

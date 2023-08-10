@@ -12,16 +12,13 @@ class Constant {
         const val URL_PRIVACY_POLICY = "https://vciacsoym7.feishu.cn/docx/LmQfdZqgdokb49xEelnc5Osqnhc"
 //        const val URL_TERMS_OF_USE = "https://h73vhyaffj.feishu.cn/docx/UmQ3dJdYPoQbghx3t1LcXhNanTg"
         const val URL_TRADITIONAL = "http://pdf.rruurcm.cn/pdf/Android/pdftwo/home.html"
-        const val URL_DIGITAL = "https://trans.biekqcv.cn/public/H5/fanyi/translator/recorder.html"
-        const val URL_PIANO = "https://trans.biekqcv.cn/public/H5/fanyi/translator/photograph.html"
-//        const val URL_PIANO = "https://www.ydl.cool/xx/photograph.html"
         const val VIP_MONTH = "pdfseven_month"
 //        const val VIP_HALF_YEAR = "translator_halfyear"
 //        const val VIP_YEAR = "translator_year"
 
         //测试id
         const val AD_BANNER_ID = "ca-app-pub-3940256099942544/2934735716"
-        const val AD_INTERSTITIAL_ID = "ca-app-pub-3940256099942544/4411468910"
+//        const val AD_INTERSTITIAL_ID = "ca-app-pub-3940256099942544/4411468910"
         const val AD_APP_OPEN_ID = "ca-app-pub-3940256099942544/5662855259"
         //正式id
 //    const val AD_BANNER_ID =  "ca-app-pub-4579422483792864/3017018375"

@@ -22,11 +22,11 @@ class WebPlayActivity : BaseVMActivity() {
 
     override fun initView() {
         binding.apply {
-            toolBar.title = intent.getStringExtra("Title")
-            setSupportActionBar(toolBar)
-            toolBar.setNavigationOnClickListener {
-                onBackPressed()
-            }
+//            toolBar.title = intent.getStringExtra("Title")
+//            setSupportActionBar(toolBar)
+//            toolBar.setNavigationOnClickListener {
+//                onBackPressed()
+//            }
             webView.settings.apply {
                 javaScriptEnabled = true
             }

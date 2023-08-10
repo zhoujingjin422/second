@@ -110,46 +110,46 @@ var mInterstitialAd: InterstitialAd? = null
 
 /*** 加载插页广告 */
 fun loadInterstitialAd(context: Context) {
-    InterstitialAd.load(
-        context,
-        Constant.AD_INTERSTITIAL_ID,
-        AdRequest.Builder().build(),
-        object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-                mInterstitialAd = null
-            }
-
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                mInterstitialAd = interstitialAd
-
-            }
-        })
+//    InterstitialAd.load(
+//        context,
+//        Constant.AD_INTERSTITIAL_ID,
+//        AdRequest.Builder().build(),
+//        object : InterstitialAdLoadCallback() {
+//            override fun onAdFailedToLoad(adError: LoadAdError) {
+//                mInterstitialAd = null
+//            }
+//
+//            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+//                mInterstitialAd = interstitialAd
+//
+//            }
+//        })
 }
 
 /*** 显示插屏广告 */
 fun showInterstitialAd(activity: Activity, callback: (() -> Unit)? = null) {
-    if (mInterstitialAd != null) {
-        mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
-            override fun onAdDismissedFullScreenContent() {
-                mInterstitialAd = null
-                loadInterstitialAd(activity)
-                callback?.invoke()
-            }
-
-            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-                mInterstitialAd = null
-                callback?.invoke()
-            }
-
-            override fun onAdShowedFullScreenContent() {
-            }
-        }
-
-        mInterstitialAd!!.show(activity)
-    } else {
-        loadInterstitialAd(activity)
-        callback?.invoke()
-    }
+//    if (mInterstitialAd != null) {
+//        mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+//            override fun onAdDismissedFullScreenContent() {
+//                mInterstitialAd = null
+//                loadInterstitialAd(activity)
+//                callback?.invoke()
+//            }
+//
+//            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+//                mInterstitialAd = null
+//                callback?.invoke()
+//            }
+//
+//            override fun onAdShowedFullScreenContent() {
+//            }
+//        }
+//
+//        mInterstitialAd!!.show(activity)
+//    } else {
+//        loadInterstitialAd(activity)
+//        callback?.invoke()
+//    }
 
 }
 

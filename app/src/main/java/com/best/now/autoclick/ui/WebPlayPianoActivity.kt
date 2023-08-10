@@ -8,14 +8,14 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
-import android.view.Gravity
 import android.webkit.*
-import android.widget.Toast
 import androidx.core.content.FileProvider
 import com.best.now.autoclick.BaseVMActivity
 import com.best.now.autoclick.BuildConfig
 import com.best.now.autoclick.R
 import com.best.now.autoclick.databinding.ActivityWebPlayPianoBinding
+import com.best.now.autoclick.dialog.ChooseWayPop
+import com.blankj.utilcode.util.ToastUtils
 import java.io.File
 
 
@@ -35,11 +35,11 @@ class WebPlayPianoActivity : BaseVMActivity() {
     @SuppressLint("JavascriptInterface", "SetJavaScriptEnabled")
     override fun initView() {
         binding.apply {
-            toolBar.title = intent.getStringExtra("Title")
-            setSupportActionBar(toolBar)
-            toolBar.setNavigationOnClickListener {
-                onBackPressed()
-            }
+//            toolBar.title = intent.getStringExtra("Title")
+//            setSupportActionBar(toolBar)
+//            toolBar.setNavigationOnClickListener {
+//                onBackPressed()
+//            }
             webView.settings.apply {
                 useWideViewPort = true
                 loadWithOverviewMode = true
@@ -51,7 +51,7 @@ class WebPlayPianoActivity : BaseVMActivity() {
                 allowUniversalAccessFromFileURLs = false
                 javaScriptEnabled = true
             }
-//            webView.addJavascriptInterface(JavaScriptObject(this@WebPlayPianoActivity),"android")
+            webView.addJavascriptInterface(JavaScriptObject(this@WebPlayPianoActivity),"android")
             webView.webViewClient = WebViewClient()
             webView.webChromeClient = object : WebChromeClient(){
                 override fun onShowFileChooser(
@@ -60,14 +60,33 @@ class WebPlayPianoActivity : BaseVMActivity() {
                     fileChooserParams: FileChooserParams?
                 ): Boolean {
                     uploadMessageAboveL = filePathCallback
-                    takePic()
+                    showChooseWay()
                     return true
                 }
             }
         }
     }
     private var mImageUri: Uri? = null
+    private fun showChooseWay(){
+        val pop = ChooseWayPop(this@WebPlayPianoActivity, { chooseFile() },{fromOtherApp()})
+        pop.showPopupWindow()
+    }
 
+    private fun fromOtherApp(){
+        startActivity(Intent(this@WebPlayPianoActivity,ShowHowActivity::class.java))
+        uploadMessageAboveL?.onReceiveValue(null)
+        uploadMessageAboveL = null
+    }
+    private fun chooseFile(){
+        val i = Intent(Intent.ACTION_GET_CONTENT)
+        i.addCategory(Intent.CATEGORY_OPENABLE)
+        i.type = "*/*"
+        try {
+            startActivityForResult(Intent.createChooser(i, "test"), 101)
+        } catch (e: android.content.ActivityNotFoundException) {
+            ToastUtils.showShort("File management app not found, please install file management app and try again")
+        }
+    }
     /**
      * 拍照
      */
@@ -96,11 +115,11 @@ class WebPlayPianoActivity : BaseVMActivity() {
 
 //                cameraIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                 startActivityForResult(cameraIntent, 112)
-            } else {
+            }/* else {
                 val toast = Toast.makeText(this, "请确认已经插入SD卡", Toast.LENGTH_SHORT)
                 toast.setGravity(Gravity.CENTER, 0, 0)
                 toast.show()
-            }
+            }*/
         } catch (e: Exception) {
             e.printStackTrace()
             uploadMessageAboveL?.onReceiveValue(null)
@@ -152,11 +171,26 @@ class WebPlayPianoActivity : BaseVMActivity() {
                 uploadMessageAboveL?.onReceiveValue(arr)
                 uploadMessageAboveL = null
             }
+            if (mImageUri==null){
+                uploadMessageAboveL?.onReceiveValue(null)
+                uploadMessageAboveL = null
+            }
+        }else if (requestCode==101){
+            val uri = data?.data
+            uploadMessageAboveL = if (uri==null){
+                uploadMessageAboveL?.onReceiveValue(null)
+                null
+            }else{
+                val arr = arrayOf(uri)
+                uploadMessageAboveL?.onReceiveValue(arr)
+                null
+            }
         }
-}
+    }
+
     class JavaScriptObject(private val activity: Activity) {
         @JavascriptInterface
-        fun backFn(str:String) {
+        fun goback(str:String) {
             activity.finish()
         }
     }

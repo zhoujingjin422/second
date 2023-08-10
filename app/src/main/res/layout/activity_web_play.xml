@@ -12,13 +12,13 @@
         android:background="@color/colorPrimary"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
+        <!--<androidx.appcompat.widget.Toolbar
             android:id="@+id/tool_bar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@mipmap/icon_back"
             android:layout_marginTop="@dimen/status_bar_height"
-            app:titleTextColor="@color/white"/>
+            app:titleTextColor="@color/white"/>-->
         <WebView
             android:id="@+id/web_view"
             android:layout_width="match_parent"

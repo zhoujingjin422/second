@@ -157,38 +157,38 @@ public class AppOpenManager implements LifecycleObserver, Application.ActivityLi
         // and an ad is available.
         // TODO: 广告一直显示
 //       if (!PublicHelper2.Companion.isPurchased2()){
-       if (true){
-           if (!isShowingAd && isAdAvailable()) {
-               Log.d(LOG_TAG, "Will show ad.");
-
-               FullScreenContentCallback fullScreenContentCallback =
-                       new FullScreenContentCallback() {
-                           @Override
-                           public void onAdDismissedFullScreenContent() {
-                               // Set the reference to null so isAdAvailable() returns false.
-                               AppOpenManager.this.appOpenAd = null;
-                               isShowingAd = false;
-                               fetchAd();
-                           }
-
-                           @Override
-                           public void onAdFailedToShowFullScreenContent(AdError adError) {
-                           }
-
-                           @Override
-                           public void onAdShowedFullScreenContent() {
-                               isShowingAd = true;
-                           }
-                       };
-
-               appOpenAd.setFullScreenContentCallback(fullScreenContentCallback);
-               appOpenAd.show(currentActivity);
-
-           } else {
-               Log.d(LOG_TAG, "Can not show ad.");
-               fetchAd();
-           }
-       }
+//       if (true){
+//           if (!isShowingAd && isAdAvailable()) {
+//               Log.d(LOG_TAG, "Will show ad.");
+//
+//               FullScreenContentCallback fullScreenContentCallback =
+//                       new FullScreenContentCallback() {
+//                           @Override
+//                           public void onAdDismissedFullScreenContent() {
+//                               // Set the reference to null so isAdAvailable() returns false.
+//                               AppOpenManager.this.appOpenAd = null;
+//                               isShowingAd = false;
+//                               fetchAd();
+//                           }
+//
+//                           @Override
+//                           public void onAdFailedToShowFullScreenContent(AdError adError) {
+//                           }
+//
+//                           @Override
+//                           public void onAdShowedFullScreenContent() {
+//                               isShowingAd = true;
+//                           }
+//                       };
+//
+//               appOpenAd.setFullScreenContentCallback(fullScreenContentCallback);
+//               appOpenAd.show(currentActivity);
+//
+//           } else {
+//               Log.d(LOG_TAG, "Can not show ad.");
+//               fetchAd();
+//           }
+//       }
     }
 
     /**

@@ -14,6 +14,7 @@ import com.lzy.okgo.cookie.CookieJarImpl
 import com.lzy.okgo.cookie.store.DBCookieStore
 import com.lzy.okgo.model.HttpHeaders
 import com.lzy.okgo.model.HttpParams
+import com.zlw.main.recorderlib.RecordManager
 import okhttp3.OkHttpClient
 import java.util.Queue
 
@@ -33,6 +34,7 @@ class AutoClickApplication:Application() {
             appOpenManager?.fetchAd()
         }
         appOpenManager = AppOpenManager(this)
+        RecordManager.getInstance().init(this,true)
     }
     /*** 初始化OkGo */
     fun initOkGo() {
