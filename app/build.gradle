@@ -79,5 +79,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.guolindev.permissionx:permissionx:1.7.1'
     implementation 'com.github.zhaolewei:ZlwAudioRecorder:v1.08'
+
     implementation 'io.github.razerdp:BasePopup:3.2.1'
 }

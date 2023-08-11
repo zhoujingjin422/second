@@ -54,10 +54,22 @@
         <activity android:name=".ui.SettingActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.WebActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.WebPlayActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.WebPlayPianoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.WebPlayPianoActivity" android:screenOrientation="portrait"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content"/>
+                <!-- 允许所有类型文件-->
+                <data android:mimeType="*/*" />
+                <!-- 只允许图片文件-->
+                <!--<data android:mimeType="image/*"/>-->
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.RecordActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.ShowHowActivity" android:screenOrientation="portrait"/>
         <service android:name="com.zlw.main.recorderlib.recorder.RecordService" />
+
     </application>
     <!--适配华为（huawei）刘海屏-->
     <meta-data
@@ -68,5 +80,4 @@
         android:name="notch.config"
         android:value="portrait|landscape" />
 <!--    广告-->
-
 </manifest>

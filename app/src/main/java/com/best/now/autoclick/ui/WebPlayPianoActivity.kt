@@ -15,6 +15,7 @@ import com.best.now.autoclick.BuildConfig
 import com.best.now.autoclick.R
 import com.best.now.autoclick.databinding.ActivityWebPlayPianoBinding
 import com.best.now.autoclick.dialog.ChooseWayPop
+import com.best.now.autoclick.utils.Constant
 import com.blankj.utilcode.util.ToastUtils
 import java.io.File
 
@@ -34,6 +35,7 @@ class WebPlayPianoActivity : BaseVMActivity() {
 
     @SuppressLint("JavascriptInterface", "SetJavaScriptEnabled")
     override fun initView() {
+//        val uri = intent.data
         binding.apply {
 //            toolBar.title = intent.getStringExtra("Title")
 //            setSupportActionBar(toolBar)
@@ -60,15 +62,18 @@ class WebPlayPianoActivity : BaseVMActivity() {
                     fileChooserParams: FileChooserParams?
                 ): Boolean {
                     uploadMessageAboveL = filePathCallback
-                    showChooseWay()
+                    showChooseWay(fileChooserParams?.acceptTypes)
                     return true
                 }
             }
         }
     }
     private var mImageUri: Uri? = null
-    private fun showChooseWay(){
-        val pop = ChooseWayPop(this@WebPlayPianoActivity, { chooseFile() },{fromOtherApp()})
+    private fun showChooseWay(acceptTypes: Array<String>?) {
+        val pop = ChooseWayPop(this@WebPlayPianoActivity, { chooseFile(acceptTypes) },{takePic()}){
+            uploadMessageAboveL?.onReceiveValue(null)
+            uploadMessageAboveL = null
+        }
         pop.showPopupWindow()
     }
 
@@ -77,7 +82,7 @@ class WebPlayPianoActivity : BaseVMActivity() {
         uploadMessageAboveL?.onReceiveValue(null)
         uploadMessageAboveL = null
     }
-    private fun chooseFile(){
+    private fun chooseFile(acceptTypes: Array<String>?) {
         val i = Intent(Intent.ACTION_GET_CONTENT)
         i.addCategory(Intent.CATEGORY_OPENABLE)
         i.type = "*/*"
@@ -140,10 +145,11 @@ class WebPlayPianoActivity : BaseVMActivity() {
         }
     }
     override fun initData() {
-        val url = intent.getStringExtra("Url")
-        url?.let {
+//        val url = intent.getStringExtra("Url")
+        /*url?.let {
             binding.webView.loadUrl(it)
-        }
+        }*/
+        binding.webView.loadUrl(Constant.URL_TRADITIONAL)
     }
 
 

@@ -13,10 +13,8 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tool_bar"
             android:layout_width="match_parent"
-            android:layout_height="78dp"
+            android:layout_height="wrap_content"
             app:navigationIcon="@mipmap/icon_back"
-            android:paddingBottom="20dp"
-            android:layout_marginTop="@dimen/status_bar_height"
             app:title="Import Files from other App"
             app:titleTextColor="@color/black"/>
         <androidx.core.widget.NestedScrollView

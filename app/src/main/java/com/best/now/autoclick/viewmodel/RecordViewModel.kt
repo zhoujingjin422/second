@@ -14,7 +14,7 @@ class RecordViewModel:ViewModel() {
      * 0 未开始录音  1正在录音  2录音停止  3 播放录音
      */
     var recordState = MutableLiveData(0)
-    private lateinit var timer: Timer
+    private  var timer: Timer?=null
     private var currentSecond=0
 
     private  var second:MutableLiveData<Int>  = MutableLiveData()
@@ -23,14 +23,33 @@ class RecordViewModel:ViewModel() {
     }
 
     fun startTimer(){
+        pause= false
         timer=Timer()
         currentSecond=0
         val timerTask=object :TimerTask(){
             override fun run() {
-                currentSecond++
-                second.postValue(currentSecond)
+                if (!pause){
+                    currentSecond++
+                    second.postValue(currentSecond)
+                }
             }
         }
-        timer.schedule(timerTask,1000,1000)
+        timer?.schedule(timerTask,1000,1000)
+    }
+    var pause = false
+    fun pauseTimer(){
+        pause = true
+    }
+    fun continueTimer(){
+        pause = false
+    }
+    fun restartTimer(){
+        timer?.cancel()
+        currentSecond = 0
+        startTimer()
+    }
+    fun release(){
+        second.postValue(0)
+        timer?.cancel()
     }
 }

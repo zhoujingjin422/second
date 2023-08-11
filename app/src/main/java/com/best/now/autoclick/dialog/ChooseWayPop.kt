@@ -11,7 +11,7 @@ import razerdp.basepopup.BasePopupWindow
 author:zhoujingjin
 date:2023/8/10
  */
-class ChooseWayPop(context:Context, action: () -> Unit, action2:()-> Unit):BasePopupWindow(context) {
+class ChooseWayPop(context:Context, action: () -> Unit, action2:()-> Unit, action3:()-> Unit):BasePopupWindow(context) {
 
 //    override fun onCreateAnimateView(): View {
 //        return LayoutInflater.from(context).inflate(R.layout.pop_choose_way,null)
@@ -31,7 +31,12 @@ class ChooseWayPop(context:Context, action: () -> Unit, action2:()-> Unit):BaseP
                 action.invoke()
                 dismiss()
             }
+            ivCancel.setOnClickListener {
+                action3.invoke()
+                dismiss()
+            }
         }
+    setOutSideDismiss(false)
         popupGravity = Gravity.BOTTOM
     }
 }
