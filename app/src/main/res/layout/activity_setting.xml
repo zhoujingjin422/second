@@ -173,12 +173,6 @@
                                     android:layout_gravity="end|center_vertical"
                                     android:layout_marginEnd="22dp"/>
                             </FrameLayout>
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:layout_marginStart="14dp"
-                                android:layout_marginEnd="14dp"
-                                android:background="#D8D8D8"/>
                         </LinearLayout>
 
                 </LinearLayout>
@@ -189,8 +183,7 @@
         <LinearLayout
             android:id="@+id/adv_banner"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginBottom="14dp"
+            android:layout_height="50dp"
             android:background="#F2F4FE"
             android:orientation="vertical"
             android:layout_marginTop="8dp"

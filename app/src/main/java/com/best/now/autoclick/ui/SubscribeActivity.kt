@@ -49,6 +49,9 @@ class SubscribeActivity:BaseVMActivity() {
             tvSubTitle.setOnClickListener {
                 buy()
             }
+            ivClose.setOnClickListener {
+                finish()
+            }
         }
     }
 
@@ -289,11 +292,5 @@ class SubscribeActivity:BaseVMActivity() {
         super.onDestroy()
         billingClient.endConnection()
         BusUtils.unregister(this)
-    }
-
-    override fun onBackPressed() {
-        showInterstitialAd(this) {
-            super.onBackPressed()
-        }
     }
 }

@@ -67,7 +67,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.RecordActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.ShowHowActivity" android:screenOrientation="portrait"/>
         <service android:name="com.zlw.main.recorderlib.recorder.RecordService" />
 
     </application>

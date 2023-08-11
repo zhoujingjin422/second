@@ -11,7 +11,7 @@ class Constant {
         const val MIX_PARAMETER = "msjd5=wwes6&qxfgj2=mhsk3&uisod0=mxqcu0"
         const val URL_PRIVACY_POLICY = "https://vciacsoym7.feishu.cn/docx/LmQfdZqgdokb49xEelnc5Osqnhc"
 //        const val URL_TERMS_OF_USE = "https://h73vhyaffj.feishu.cn/docx/UmQ3dJdYPoQbghx3t1LcXhNanTg"
-        const val URL_TRADITIONAL = "http://pdf.rruurcm.cn/pdf/Android/pdftwo/home.html"
+        const val URL_TRADITIONAL = "http://pdf.rruurcm.cn/pdf/Android/pdftwo/home.html?lang=en"
         const val VIP_MONTH = "pdfseven_month"
 //        const val VIP_HALF_YEAR = "translator_halfyear"
 //        const val VIP_YEAR = "translator_year"
