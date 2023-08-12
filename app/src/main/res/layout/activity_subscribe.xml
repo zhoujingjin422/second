@@ -8,17 +8,25 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/sub_back">
-
+        android:layout_height="match_parent">
         <ImageView
             android:id="@+id/iv_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/sub_top_back"
-            android:layout_marginTop="84dp"
-            android:scaleType="centerCrop"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/image_home_top"/>
+        <ImageView
+            android:id="@+id/iv_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/image_home_word"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="110dp"
+            android:layout_marginStart="22dp"/>
         <ImageView
             android:id="@+id/iv_close"
             android:layout_width="wrap_content"
@@ -38,33 +46,22 @@
             android:text="Resume Purchase"
             android:layout_marginStart="23dp"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="12sp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
             android:background="@drawable/text_shape"/>
-        <ImageView
-            android:id="@+id/iv_word"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sub_top_text"
-            app:layout_constraintStart_toStartOf="@id/iv_top"
-            app:layout_constraintTop_toTopOf="@id/iv_top"
-            app:layout_constraintBottom_toBottomOf="@id/iv_top"
-            android:layout_marginStart="35dp"/>
-        <androidx.cardview.widget.CardView
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/iv_top"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
-            app:cardElevation="2dp"
-            app:cardCornerRadius="8dp"
-            app:cardBackgroundColor="@color/white">
+            android:layout_marginTop="-32dp">
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -75,7 +72,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:cardBackgroundColor="#F0F9F7"
+                        app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="8dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
@@ -90,7 +87,7 @@
                                 android:layout_height="80dp"
                                 android:scaleType="centerCrop"
                                 android:src="@mipmap/icon_women"/>
-                            <FrameLayout
+                            <LinearLayout
                                 android:id="@+id/ll_women"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -104,15 +101,15 @@
                                     android:textColor="@color/black"
                                     android:textStyle="bold"
                                     android:textSize="15sp"
-                                    android:text="Lily"/>
+                                    android:text="Ben"/>
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@mipmap/icon_star"
                                     android:layout_marginEnd="7dp"
-                                    android:layout_gravity="end|center_vertical"
+                                    android:layout_gravity="center_vertical"
                                     android:layout_marginStart="10dp"/>
-                            </FrameLayout>
+                            </LinearLayout>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -124,7 +121,7 @@
                                 android:textColor="@color/black"
                                 android:textSize="12sp"
                                 android:layout_toEndOf="@id/iv_women"
-                                android:text="Comprehensive and rich functions, easy to read and export PDF, recommended for use" />
+                                android:text="The pdf conversion app is very easy to use, recommended by a friend, converts various documents to each other, great" />
                         </RelativeLayout>
                     </androidx.cardview.widget.CardView>
                     <ImageView
@@ -161,16 +158,26 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="7dp"
                         android:layout_marginEnd="20dp">
-                        <ImageView
+                        <TextView
                             android:id="@+id/next"
                             android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:text="Start Free Trial"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:background="@drawable/shape_button_next" />
+                        <ImageView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/image_pay"/>
-
+                            android:src="@mipmap/icon_next"
+                            android:layout_gravity="end|center_vertical"
+                            android:layout_marginEnd="24dp"/>
                     </FrameLayout>
 
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
-        </androidx.cardview.widget.CardView>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
