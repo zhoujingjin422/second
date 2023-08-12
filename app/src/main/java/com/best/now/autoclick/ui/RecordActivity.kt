@@ -14,6 +14,7 @@ import com.zlw.main.recorderlib.RecordManager
 import com.zlw.main.recorderlib.recorder.RecordConfig
 import com.zlw.main.recorderlib.recorder.RecordHelper
 import com.zlw.main.recorderlib.recorder.listener.RecordStateListener
+import org.koin.android.ext.android.get
 import java.io.File
 import java.nio.file.Files
 
@@ -27,6 +28,7 @@ class RecordActivity:BaseVMActivity() {
     private val recordViewModel  = RecordViewModel()
     private var mediaPlayer = MediaPlayer()
     private var nowFile:File? = null
+    private var toast = true
     override fun initView() {
         binding.apply {
             setSupportActionBar(toolBar)
@@ -53,9 +55,10 @@ class RecordActivity:BaseVMActivity() {
                 }
             }
             flRerecord.setOnClickListener {
+                toast = false
                 recordViewModel.recordState.postValue(1)
                 RecordManager.getInstance().stop()
-                nowFile?.delete()
+                getNowFile()?.delete()
                 RecordManager.getInstance().start()
                 recordViewModel.restartTimer()
             }
@@ -95,8 +98,13 @@ class RecordActivity:BaseVMActivity() {
     override fun initData() {
         RecordManager.getInstance().changeFormat(RecordConfig.RecordFormat.MP3)
         RecordManager.getInstance().setRecordResultListener {
-            nowFile = it
-            ToastUtils.showShort("File saved to:${nowFile?.absolutePath}")
+            if (toast){
+                nowFile = it
+                ToastUtils.showShort("File saved to:${nowFile?.absolutePath}")
+            }else{
+                toast = !toast
+            }
+
         }
         RecordManager.getInstance().setRecordStateListener(object :RecordStateListener{
             override fun onStateChange(state: RecordHelper.RecordState?) {

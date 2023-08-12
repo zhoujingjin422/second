@@ -246,7 +246,7 @@ class WebPlayPianoActivity : BaseVMActivity() {
 
     class JavaScriptObject(private val activity: Activity) {
         @JavascriptInterface
-        fun goback(str:String) {
+        fun goback() {
             activity.finish()
         }
 
