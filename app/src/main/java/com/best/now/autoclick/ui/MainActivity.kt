@@ -64,7 +64,7 @@ class MainActivity : BaseVMActivity() {
             tvPdf.setOnClickListener {
                 if (isPurchased(this@MainActivity)){
                     PermissionX.init(this@MainActivity)
-                        .permissions(Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .permissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .request { allGranted, _, deniedList ->
                             if (allGranted) {
                                 WebPlayPianoActivity.startActivity(
@@ -83,7 +83,7 @@ class MainActivity : BaseVMActivity() {
             tvWeightGo.setOnClickListener {
                 if (isPurchased(this@MainActivity)){
                     PermissionX.init(this@MainActivity)
-                        .permissions(Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .permissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .request { allGranted, _, deniedList ->
                             if (allGranted) {
 //                                startActivity(Intent(this@MainActivity,RecordActivity::class.java))
