@@ -13,7 +13,7 @@ android {
         applicationId "com.pdf.pro.five"
         minSdk 21
         targetSdk 32
-        versionCode 6
+        versionCode 7
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -79,6 +79,5 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.guolindev.permissionx:permissionx:1.7.1'
     implementation 'com.github.zhaolewei:ZlwAudioRecorder:v1.08'
-
     implementation 'io.github.razerdp:BasePopup:3.2.1'
 }

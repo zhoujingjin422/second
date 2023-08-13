@@ -263,7 +263,7 @@ class InPurchaseUtils {
     fun queryPurchases() {
         //查询购买交易
         billingClient.queryPurchasesAsync(BillingClient.SkuType.SUBS) { billingResult, purchases ->
-            if (isPurchased(context)) {
+            if (MainActivity.purchased) {
                 return@queryPurchasesAsync
             }
             //购买结果监听

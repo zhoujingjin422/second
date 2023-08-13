@@ -196,7 +196,7 @@ public class AppOpenManager implements LifecycleObserver, Application.ActivityLi
      */
     @OnLifecycleEvent(ON_START)
     public void onStart() {
-//        showAdIfAvailable();
+        showAdIfAvailable();
         Log.d(LOG_TAG, "onStart");
     }
 }
