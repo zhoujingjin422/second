@@ -45,7 +45,7 @@ class SettingActivity:BaseVMActivity() {
             binding.btnGetVip.visibility = View.VISIBLE
             binding.llText.visibility = View.GONE
             binding.btnGetVip.setOnClickListener {
-                startActivityForResult(Intent(this@SettingActivity,SubscribeActivity::class.java),10001)
+                startActivity(Intent(this@SettingActivity,SubscribeActivity::class.java))
             }
         }else{
             binding.llText.visibility = View.VISIBLE
@@ -70,18 +70,23 @@ class SettingActivity:BaseVMActivity() {
             "yyyy.MM.dd"
         )}"
     }
-
+    @BusUtils.Bus(tag = MainActivity.BUS_TAG_BUY_STATE_PURCHASED)
+    fun purchase(purchase: Purchase) {
+        runOnUiThread {
+            setUiStateSelf(purchase.purchaseTime)
+        }
+    }
     override fun initData() {
         loadAd(binding.advBanner)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 10001&& resultCode==20001){
-            val time = data?.extras?.getLong("time")
-            time?.let {
-                setUiStateSelf(it)
-            }
-        }
+    override fun onStart() {
+        super.onStart()
+        BusUtils.register(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        BusUtils.unregister(this)
     }
 }
