@@ -52,18 +52,9 @@
         <activity android:name=".ui.SettingActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.WebActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.WebPlayActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.WebPlayPianoActivity" android:screenOrientation="portrait"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:scheme="content"/>
-                <!-- 允许所有类型文件-->
-                <data android:mimeType="*/*" />
-                <!-- 只允许图片文件-->
-                <!--<data android:mimeType="image/*"/>-->
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.WebPlayPianoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.WeightRecordActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.ProductActivity" android:screenOrientation="portrait"/>
 
     </application>
     <!--适配华为（huawei）刘海屏-->

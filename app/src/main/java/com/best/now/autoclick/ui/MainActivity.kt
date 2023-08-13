@@ -26,7 +26,7 @@ import com.permissionx.guolindev.PermissionX
 class MainActivity : BaseVMActivity() {
     companion object {
         const val BUS_TAG_UPDATE_PURCHASE_STATE = "update_purchase_state"
-        var purchased = false
+        var purchased = true
         var purchaseTime = 0L
         var productId = ""
         const val BUS_TAG_BUY_STATE_PURCHASED = "BUS_TAG_BUY_STATE_PURCHASED"
@@ -82,19 +82,8 @@ class MainActivity : BaseVMActivity() {
             }
             tvWeightGo.setOnClickListener {
                 if (isPurchased(this@MainActivity)){
-                    PermissionX.init(this@MainActivity)
-                        .permissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        .request { allGranted, _, deniedList ->
-                            if (allGranted) {
-//                                startActivity(Intent(this@MainActivity,RecordActivity::class.java))
-                            } else {
-                                ToastUtils.showShort("These permissions are denied: $deniedList")
-                            }
-                        }
+                    startActivity(Intent(this@MainActivity,WeightRecordActivity::class.java))
                 }
-
-
-
             }
         }
     }
