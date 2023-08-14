@@ -29,7 +29,7 @@
 <!--        正式-->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-4451786394323766~497132499" />
+            android:value="ca-app-pub-4451786394323766~4971324994" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}"
