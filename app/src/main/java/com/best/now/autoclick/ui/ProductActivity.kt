@@ -2,12 +2,10 @@ package com.best.now.autoclick.ui
 
 import android.app.DatePickerDialog
 import android.view.View
-import androidx.core.widget.addTextChangedListener
 import com.best.now.autoclick.BaseVMActivity
 import com.best.now.autoclick.R
 import com.best.now.autoclick.bean.ProductBean
 import com.best.now.autoclick.databinding.ActivityProductBinding
-import com.best.now.autoclick.databinding.ActivityWeightRecordBinding
 import com.best.now.autoclick.dialog.ChooseTypePop
 import com.best.now.autoclick.ext.getSpValue
 import com.best.now.autoclick.ext.putSpValue
@@ -39,16 +37,21 @@ class ProductActivity:BaseVMActivity() {
                 datePicker.show()
             }
             tvDay.setOnClickListener {
-                val pop = ChooseTypePop(this@ProductActivity){
+                val pop = ChooseTypePop(this@ProductActivity) {
                     type = it
+                    tvDay.text = when (it) {
+                        1 -> "Day"
+                        2 -> "Month"
+                        3 -> "Year"
+                        else -> {
+                            "Day"
+                        }
+                    }
                 }
                 pop.showPopupWindow()
             }
-            etInput.addTextChangedListener {
-
-            }
             tvCalculate.setOnClickListener {
-                val temp = ProductBean(etInput.editableText.toString().toInt(),type,date)
+                val temp = ProductBean(etInput.editableText.toString().toInt(),type,date.timeInMillis)
                 viewModel.productBean.postValue(temp)
                 putSpValue("product",Gson().toJson(temp))
             }
@@ -66,13 +69,52 @@ class ProductActivity:BaseVMActivity() {
         if (str.isNotEmpty()){
            val productBean = Gson().fromJson(str,ProductBean::class.java)
             viewModel.productBean.postValue(productBean)
+        }else{
+            viewModel.productBean.postValue(null)
         }
         viewModel.productBean.observe(this){
             if (it==null){
                 binding.cardAdd.visibility = View.GONE
+                binding.tvDate.text = "${date.get(Calendar.YEAR)}-${date.get(Calendar.MONTH)+1}-${date.get(Calendar.DAY_OF_MONTH)}"
+                binding.tvDay.text ="Day"
             }else{
                 binding.cardAdd.visibility = View.VISIBLE
-
+                binding.tvDay.text = when(it.type){
+                    1->  "Day"
+                    2->  "Month"
+                    3->  "Year"
+                    else -> {"Day"}
+                }
+                binding.etInput.setText(it.num.toString())
+                //开始算时间吧
+                val now = Calendar.getInstance()
+                now.timeInMillis = it.startDay
+                binding.tvDate.text = "${now.get(Calendar.YEAR)}-${now.get(Calendar.MONTH)+1}-${now.get(Calendar.DAY_OF_MONTH)}"
+                var day = 0
+                when(it.type){
+                    1->{
+                        day = it.num
+                    }
+                    2->{
+                        day = it.num*30
+                    }
+                    3->{
+                        day = it.num*365
+                    }
+                }
+                now.timeInMillis = it.startDay+day*24*3600*1000L
+                val year =  now.get(Calendar.YEAR)
+                val month =  now.get(Calendar.MONTH)+1
+                val dayStr =  now.get(Calendar.DAY_OF_MONTH)
+                binding.tvEndDay.text = "${year}Year${month}Mon${dayStr}Day"
+                if (now.timeInMillis>Calendar.getInstance().timeInMillis){
+                    //过期了
+                    binding.tvTips.text = "Without the shelf life"
+                    binding.tvTips.setTextColor(resources.getColor(R.color.F7726C))
+                }else{
+                    binding.tvTips.text = "Within the shelf life"
+                    binding.tvTips.setTextColor(resources.getColor(R.color.c_00A375))
+                }
             }
         }
     }
