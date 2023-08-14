@@ -163,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:text="2023Year7Mon26Day"
                     android:textStyle="bold"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     android:textColor="@color/black"
                     android:layout_marginTop="8dp"
                     android:layout_gravity="center_horizontal"/>

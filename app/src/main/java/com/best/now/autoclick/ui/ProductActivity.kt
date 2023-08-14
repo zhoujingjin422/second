@@ -20,7 +20,7 @@ date:2023/8/13
 class ProductActivity:BaseVMActivity() {
     private val binding by binding<ActivityProductBinding>(R.layout.activity_product)
     private lateinit var viewModel: ProductViewModel
-    private val date =  Calendar.getInstance()
+    private var date =  Calendar.getInstance()
     private var type = 1
     override fun initView() {
         binding.apply {
@@ -74,11 +74,13 @@ class ProductActivity:BaseVMActivity() {
         }
         viewModel.productBean.observe(this){
             if (it==null){
-                binding.cardAdd.visibility = View.GONE
+                binding.cardBottom.visibility = View.GONE
+                date = Calendar.getInstance()
+                binding.etInput.setText("")
                 binding.tvDate.text = "${date.get(Calendar.YEAR)}-${date.get(Calendar.MONTH)+1}-${date.get(Calendar.DAY_OF_MONTH)}"
                 binding.tvDay.text ="Day"
             }else{
-                binding.cardAdd.visibility = View.VISIBLE
+                binding.cardBottom.visibility = View.VISIBLE
                 binding.tvDay.text = when(it.type){
                     1->  "Day"
                     2->  "Month"
@@ -94,22 +96,30 @@ class ProductActivity:BaseVMActivity() {
                 when(it.type){
                     1->{
                         day = it.num
+                        now.timeInMillis = it.startDay+day*24*3600*1000L
+                        val year =  now.get(Calendar.YEAR)
+                        val month =  now.get(Calendar.MONTH)+1
+                        val dayStr =  now.get(Calendar.DAY_OF_MONTH)
+                        binding.tvEndDay.text = "${year}Year${month}Mon${dayStr}Day"
                     }
                     2->{
-                        day = it.num*30
+                        val month =  now.get(Calendar.MONTH)+1
+                        val dayStr =  now.get(Calendar.DAY_OF_MONTH)
+                        val year = now.get(Calendar.YEAR)+(it.num+month)/12
+                        binding.tvEndDay.text = "${year}Year${(it.num+month)%12}Mon${dayStr}Day"
+                        now.set(year,(it.num+month)%12-1,dayStr)
                     }
                     3->{
-                        day = it.num*365
+                        val year =  now.get(Calendar.YEAR)+it.num
+                        val month =  now.get(Calendar.MONTH)+1
+                        val dayStr =  now.get(Calendar.DAY_OF_MONTH)
+                        now.set(year,month-1,dayStr)
+                        binding.tvEndDay.text = "${year}Year${month}Mon${dayStr}Day"
                     }
                 }
-                now.timeInMillis = it.startDay+day*24*3600*1000L
-                val year =  now.get(Calendar.YEAR)
-                val month =  now.get(Calendar.MONTH)+1
-                val dayStr =  now.get(Calendar.DAY_OF_MONTH)
-                binding.tvEndDay.text = "${year}Year${month}Mon${dayStr}Day"
-                if (now.timeInMillis>Calendar.getInstance().timeInMillis){
+                if (now.timeInMillis<Calendar.getInstance().timeInMillis){
                     //过期了
-                    binding.tvTips.text = "Without the shelf life"
+                    binding.tvTips.text = "Be past its shelf life"
                     binding.tvTips.setTextColor(resources.getColor(R.color.F7726C))
                 }else{
                     binding.tvTips.text = "Within the shelf life"
