@@ -10,10 +10,10 @@ android {
     buildToolsVersion "32.0.0"
 
     defaultConfig {
-        applicationId "com.pdf.pro.five"
+        applicationId "com.pdf.plus.eight"
         minSdk 21
         targetSdk 32
-        versionCode 9
+        versionCode 1
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -75,9 +75,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-ads:20.5.0'
     //工具类
     api 'com.blankj:utilcode:latest.release'
-
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.guolindev.permissionx:permissionx:1.7.1'
-    implementation 'com.github.zhaolewei:ZlwAudioRecorder:v1.08'
     implementation 'io.github.razerdp:BasePopup:3.2.1'
 }
