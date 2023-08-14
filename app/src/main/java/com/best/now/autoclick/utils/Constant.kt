@@ -9,7 +9,7 @@ class Constant {
         const val EVENTDOMAIN = "http://pdf2.margot.top/"
         const val APP_PARAMETER = "Pdfthree"
         const val MIX_PARAMETER = "cdsx1=erty6f2&hgfd3a=yhnbg9&fgtr2=ncvfd4"
-        const val URL_PRIVACY_POLICY = "https://vciacsoym7.feishu.cn/docx/P0efdlERPoxjKixXoNmc6O5Ony"
+        const val URL_PRIVACY_POLICY = "https://vciacsoym7.feishu.cn/docx/P0efdlERPoxjKixXoNmc6O5Ony7"
 //        const val URL_TERMS_OF_USE = "https://h73vhyaffj.feishu.cn/docx/UmQ3dJdYPoQbghx3t1LcXhNanTg"
         const val URL_TRADITIONAL = "http://pdf.margot.top/pdf/Android/pdfthree/home.html?lang=en"
         const val VIP_MONTH = "pdfseven_month"
