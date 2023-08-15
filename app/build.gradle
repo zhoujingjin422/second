@@ -13,7 +13,7 @@ android {
         applicationId "com.pdf.pro.six"
         minSdk 21
         targetSdk 32
-        versionCode 4
+        versionCode 5
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -70,7 +70,7 @@ dependencies {
     implementation 'com.lzy.net:okrx2:2.0.2'
     implementation 'com.lzy.net:okserver:2.0.5'
     //谷歌支付
-    def billing_version = "4.0.0"
+    def billing_version = "6.0.0"
     implementation "com.android.billingclient:billing:$billing_version"
     //广告Admob
     implementation 'com.google.android.gms:play-services-ads:20.5.0'
