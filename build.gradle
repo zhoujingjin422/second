@@ -18,6 +18,8 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.blankj:bus-gradle-plugin:latest.release'
         classpath "com.bytedance.android:aabresguard-plugin:0.1.8"
+        classpath "com.github.liujingxing:XmlClassGuard:1.2.4"
+
     }
 }
 

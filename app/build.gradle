@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id "com.blankj.bus"
+    id "xml-class-guard"
 }
 
 android {
@@ -13,7 +14,7 @@ android {
         applicationId "com.pdf.pro.six"
         minSdk 21
         targetSdk 32
-        versionCode 2
+        versionCode 4
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
