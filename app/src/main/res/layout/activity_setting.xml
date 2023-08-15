@@ -9,43 +9,45 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#70ADF4">
+        android:background="@color/black">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tool_bar"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="78dp"
-                app:navigationIcon="@mipmap/icon_back"
-                 android:paddingBottom="20dp"
-                 android:layout_marginTop="@dimen/status_bar_height"
-                app:titleTextColor="@color/black"/>
+                android:layout_height="200dp"
+                android:background="@drawable/setting_top">
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/tool_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="78dp"
+                    app:navigationIcon="@mipmap/icon_back"
+                    android:paddingBottom="20dp"
+                    android:layout_marginTop="@dimen/status_bar_height"
+                    app:titleTextColor="@color/white"/>
+            </FrameLayout>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="-20dp">
+                android:layout_marginTop="-30dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingBottom="20dp">
+                    android:orientation="vertical">
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginTop="27dp"
-                        android:background="@drawable/setting_back">
-                        <ImageView
+                        android:layout_marginEnd="12dp">
+                        <View
                             android:id="@+id/iv_back"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="155dp"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            android:src="@drawable/setting_back"
-                            android:visibility="invisible"
+                            android:background="@drawable/shape_setting_red"
                             android:scaleType="centerCrop"/>
                         <ImageView
                             android:layout_width="wrap_content"
@@ -63,7 +65,7 @@
                             android:text="Get VIP"
                             android:textSize="15sp"
                             android:textStyle="bold"
-                            android:textColor="#0082FF"
+                            android:textColor="#FF4D03"
                             android:background="@drawable/shape_button_get_vip"
                             android:layout_marginBottom="43dp"
                             android:visibility="visible"/>
@@ -157,15 +159,16 @@
                             <FrameLayout
                                 android:id="@+id/fl_policy"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="62dp">
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="15sp"
                                     android:textColor="@color/black"
                                     android:textStyle="bold"
-                                    android:text="Privacy Policy"
-                                    android:padding="16dp"/>
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="22dp"
+                                    android:text="Privacy Policy"/>
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
