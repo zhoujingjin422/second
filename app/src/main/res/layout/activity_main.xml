@@ -8,19 +8,61 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/main_back">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iv_top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="106dp"
-            android:src="@drawable/sub_top_back"
-            android:scaleType="centerCrop"/>
+            android:background="@drawable/home_back"
+            app:layout_constraintBottom_toTopOf="@id/adv_banner">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="286dp"
+                android:background="@drawable/shape_corner_home">
+
+                            <ImageView
+                                android:id="@+id/iv_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/iv_text"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginTop="23dp"
+                                android:scaleType="fitXY"/>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="35dp"
+                    android:layout_marginTop="29dp"
+                    android:layout_marginBottom="20dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Other tools"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/me_icon_arrow_white"
+                        android:layout_gravity="end|center_vertical"/>
+                </FrameLayout>
+                            <ImageView
+                                android:id="@+id/iv_voice"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/iv_voice"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="20dp"
+                                android:scaleType="fitXY"/>
+                        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
         <ImageView
             android:id="@+id/iv_setting"
             android:layout_width="wrap_content"
@@ -30,70 +72,6 @@
             android:layout_marginEnd="16dp"
             android:layout_marginTop="40dp"
             android:src="@mipmap/icon_my_setting"/>
-        <TextView
-            android:id="@+id/tv_sub_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/iv_setting"
-            app:layout_constraintBottom_toBottomOf="@id/iv_setting"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="Resume Purchase"
-            android:layout_marginStart="23dp"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            android:visibility="invisible"
-            android:background="@drawable/text_shape"/>
-        <ImageView
-            android:id="@+id/iv_word"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sub_top_text"
-            app:layout_constraintStart_toStartOf="@id/iv_top"
-            app:layout_constraintTop_toTopOf="@id/iv_top"
-            app:layout_constraintBottom_toBottomOf="@id/iv_top"
-            android:layout_marginStart="40dp"/>
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/iv_top"
-            app:layout_constraintBottom_toTopOf="@id/adv_banner"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/shape_corner_home">
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/iv_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/iv_text"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginTop="23dp"
-                    android:scaleType="fitXY"/>
-                <ImageView
-                    android:id="@+id/iv_voice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/iv_voice"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginTop="23dp"
-                    android:scaleType="fitXY"/>
-                </LinearLayout>
-            </androidx.core.widget.NestedScrollView>
-        </FrameLayout>
         <LinearLayout
             android:id="@+id/adv_banner"
             android:layout_width="match_parent"
@@ -103,6 +81,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

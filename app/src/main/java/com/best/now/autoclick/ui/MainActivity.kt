@@ -64,7 +64,7 @@ class MainActivity : BaseVMActivity() {
                         .permissions(Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .request { allGranted, _, deniedList ->
                             if (allGranted) {
-                                startActivity(Intent(this@MainActivity,RecordActivity::class.java))
+//                                startActivity(Intent(this@MainActivity,RecordActivity::class.java))
                             } else {
                                 ToastUtils.showShort("These permissions are denied: $deniedList")
                             }

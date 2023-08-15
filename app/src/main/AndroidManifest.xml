@@ -23,13 +23,13 @@
         android:name=".AutoClickApplication"
         android:theme="@style/Theme.AutoClick">
 <!--        测试-->
-<!--        <meta-data-->
-<!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-<!--            android:value="ca-app-pub-3940256099942544~1458002511" />-->
-<!--        正式-->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-4451786394323766~4971324994" />
+            android:value="ca-app-pub-3940256099942544~1458002511" />
+<!--        正式-->
+<!--        <meta-data-->
+<!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
+<!--            android:value="ca-app-pub-1475683683386191~5903448508" />-->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}"
@@ -66,8 +66,6 @@
                 <!--<data android:mimeType="image/*"/>-->
             </intent-filter>
         </activity>
-        <activity android:name=".ui.RecordActivity" android:screenOrientation="portrait"/>
-        <service android:name="com.zlw.main.recorderlib.recorder.RecordService" />
 
     </application>
     <!--适配华为（huawei）刘海屏-->
