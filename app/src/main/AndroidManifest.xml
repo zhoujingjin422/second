@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.best.now.autoclick">
+    package="com.best.now.pdf">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.vending.BILLING" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:requestLegacyExternalStorage="true"
-        android:name=".AutoClickApplication"
+        android:name=".AutoClickkkApplication"
         android:theme="@style/Theme.AutoClick">
 <!--        测试-->
 <!--        <meta-data-->
@@ -38,7 +38,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.SplashhhActivity"
             android:theme="@style/start_theme"
             android:exported="true">
             <intent-filter>
@@ -46,15 +46,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.GuideActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.MainActivity" android:screenOrientation="portrait" />
-        <activity android:name=".ui.SubscribeActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.SettingActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.WebActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.WebPlayActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.WebPlayPianoActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.WeightRecordActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.ProductActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.GuideeeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.MainnnActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ui.SubscribeeeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.SettingggActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.WebbbActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.WebPlayyyActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.WebPlayPianoooActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.WeightRecordddActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.ProductttActivity" android:screenOrientation="portrait"/>
 
     </application>
     <!--适配华为（huawei）刘海屏-->
