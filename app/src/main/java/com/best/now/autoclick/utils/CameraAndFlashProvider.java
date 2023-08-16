@@ -5,6 +5,7 @@ import static android.hardware.camera2.CameraCharacteristics.FLASH_INFO_STRENGTH
 import android.content.Context;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.util.Log;
@@ -16,7 +17,7 @@ public class CameraAndFlashProvider {
     private CameraManager camManager;
     private Context context;
 
-    private int level = 1;
+    private int level = 2;
     public CameraAndFlashProvider(Context context) {
         this.context = context;
     }
@@ -29,9 +30,11 @@ public class CameraAndFlashProvider {
                 if (camManager != null) {
                     cameraId = camManager.getCameraIdList()[0];
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                        camManager.turnOnTorchWithStrengthLevel(cameraId,level);
+//                        camManager.turnOnTorchWithStrengthLevel(cameraId,level);
+                        camManager.setTorchMode(cameraId, true);
+                    }else{
+                        camManager.setTorchMode(cameraId, true);
                     }
-                    camManager.setTorchMode(cameraId, true);
                 }
             } catch (CameraAccessException e) {
                 Log.e(TAG, e.toString());
@@ -48,11 +51,15 @@ public class CameraAndFlashProvider {
     public void changeStrengthLevel(int level){
         if (camManager != null) {
             String  cameraId = null;
+            this.level = level;
             try {
                 cameraId = camManager.getCameraIdList()[0];
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                this.level = level;
-                camManager.turnOnTorchWithStrengthLevel(cameraId,level);
+                CameraCharacteristics cameraCharacteristics = camManager.getCameraCharacteristics(cameraId);
+               int max = cameraCharacteristics.get(CameraCharacteristics.FLASH_INFO_STRENGTH_MAXIMUM_LEVEL);
+               if (max>1){
+                   camManager.turnOnTorchWithStrengthLevel(cameraId,level);
+               }
             }
             } catch (CameraAccessException e) {
                 throw new RuntimeException(e);

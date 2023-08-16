@@ -11,6 +11,7 @@ class FlashLightViewModel:ViewModel() {
     var ssOn = MutableLiveData(false)
     private  var timer: Timer?=null
     private var onOff = false
+     var num = 1
     fun startTimer(cameraAndFlashProvider: CameraAndFlashProvider) {
         timer= Timer()
         val timerTask=object : TimerTask(){
@@ -25,7 +26,7 @@ class FlashLightViewModel:ViewModel() {
                 }
             }
         }
-        timer?.schedule(timerTask,0,100)
+        timer?.schedule(timerTask,0,500/num.toLong())
     }
     fun release(){
         timer?.cancel()

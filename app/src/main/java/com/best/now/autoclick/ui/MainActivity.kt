@@ -61,7 +61,7 @@ class MainActivity : BaseVMActivity() {
             ivVoice.setOnClickListener {
                 if (isPurchased(this@MainActivity)){
                     PermissionX.init(this@MainActivity)
-                        .permissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .permissions(Manifest.permission.CAMERA)
                         .request { allGranted, _, deniedList ->
                             if (allGranted) {
                                 startActivity(Intent(this@MainActivity,FlashlightActivity::class.java))

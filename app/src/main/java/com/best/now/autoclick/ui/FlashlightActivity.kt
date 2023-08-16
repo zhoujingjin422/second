@@ -1,11 +1,18 @@
 package com.best.now.autoclick.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.SeekBar
+import androidx.core.view.marginEnd
+import androidx.core.view.marginRight
 import com.best.now.autoclick.BaseVMActivity
 import com.best.now.autoclick.R
 import com.best.now.autoclick.databinding.ActivityFlashLightBinding
+import com.best.now.autoclick.ext.dp2px
 import com.best.now.autoclick.utils.CameraAndFlashProvider
 import com.best.now.autoclick.viewmodel.FlashLightViewModel
 
@@ -32,10 +39,45 @@ class FlashlightActivity:BaseVMActivity() {
             ivWhite.setOnClickListener {
                 startActivity(Intent(this@FlashlightActivity,WhiteActivity::class.java))
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                llTop.visibility = View.VISIBLE
-            }else{
-                llTop.visibility = View.GONE
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//                llTop.visibility = View.VISIBLE
+//                seekBar.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
+//                    override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+//                        cameraAndFlashProvider.changeStrengthLevel(p1)
+//                    }
+//
+//                    override fun onStartTrackingTouch(p0: SeekBar?) {
+//                    }
+//
+//                    override fun onStopTrackingTouch(p0: SeekBar?) {
+//
+//                    }
+//                })
+//            }else{
+//                llTop.visibility = View.GONE
+//            }
+
+            flMus.setOnClickListener {
+                if (viewModel.num==1){
+                    return@setOnClickListener
+                }
+                viewModel.num--
+                if (viewModel.num<1)
+                    viewModel.num=1
+                showBottomView()
+                viewModel.release()
+                viewModel.startTimer(cameraAndFlashProvider)
+            }
+            flAdd.setOnClickListener {
+                if (viewModel.num==5){
+                    return@setOnClickListener
+                }
+                viewModel.num++
+                if (viewModel.num>5)
+                    viewModel.num=5
+                showBottomView()
+                viewModel.release()
+                viewModel.startTimer(cameraAndFlashProvider)
             }
         }
     }
@@ -48,6 +90,7 @@ class FlashlightActivity:BaseVMActivity() {
                 cameraAndFlashProvider.turnFlashlightOn()
             }else{
                 binding.ivLight.setImageResource(R.mipmap.icon_dark)
+                binding.ivSdt.setImageResource(R.mipmap.icon_sdt_off)
                 cameraAndFlashProvider.turnFlashlightOff()
             }
         }
@@ -58,12 +101,23 @@ class FlashlightActivity:BaseVMActivity() {
                     viewModel.lightOn.postValue(true)
                 }
                 viewModel.startTimer(cameraAndFlashProvider)
+                binding.flBottom.visibility = View.VISIBLE
+                showBottomView()
             }else{
                 binding.ivSd.setImageResource(R.mipmap.icon_sd_off)
                 viewModel.release()
                 viewModel.lightOn.postValue(true)
+                binding.flBottom.visibility = View.GONE
             }
         }
+    }
+
+    private fun showBottomView() {
+       binding.view1.visibility = View.VISIBLE
+       binding.view2.visibility = if(viewModel.num>=2) View.VISIBLE else View.GONE
+       binding.view3.visibility = if(viewModel.num>=3) View.VISIBLE else View.GONE
+       binding.view4.visibility = if(viewModel.num>=4) View.VISIBLE else View.GONE
+       binding.view5.visibility = if(viewModel.num>=5) View.VISIBLE else View.GONE
     }
 
     override fun onDestroy() {
