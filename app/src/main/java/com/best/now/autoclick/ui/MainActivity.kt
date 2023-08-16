@@ -27,7 +27,7 @@ import com.permissionx.guolindev.PermissionX
 
 class MainActivity : BaseVMActivity() {
     companion object {
-        var purchased = false
+        var purchased = true
         var purchaseTime = 0L
         var productId = ""
         const val BUS_TAG_BUY_STATE_PURCHASED = "BUS_TAG_BUY_STATE_PURCHASED"
@@ -44,7 +44,7 @@ class MainActivity : BaseVMActivity() {
             ivText.setOnClickListener {
                 if (isPurchased(this@MainActivity)){
                     PermissionX.init(this@MainActivity)
-                        .permissions(Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .permissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .request { allGranted, _, deniedList ->
                             if (allGranted) {
                                 WebPlayPianoActivity.startActivity(
@@ -61,10 +61,10 @@ class MainActivity : BaseVMActivity() {
             ivVoice.setOnClickListener {
                 if (isPurchased(this@MainActivity)){
                     PermissionX.init(this@MainActivity)
-                        .permissions(Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .permissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .request { allGranted, _, deniedList ->
                             if (allGranted) {
-//                                startActivity(Intent(this@MainActivity,RecordActivity::class.java))
+                                startActivity(Intent(this@MainActivity,FlashlightActivity::class.java))
                             } else {
                                 ToastUtils.showShort("These permissions are denied: $deniedList")
                             }
@@ -81,6 +81,9 @@ class MainActivity : BaseVMActivity() {
     }
     override fun initData() {
         loadAd(binding.advBanner)
+        if (intent.getBooleanExtra("first",false)){
+            startActivity(Intent(this,SubscribeActivity::class.java))
+        }
     }
     @BusUtils.Bus(tag = BUS_TAG_BUY_STATE_PURCHASED)
     fun purchase(purchase: Purchase) {

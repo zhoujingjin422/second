@@ -40,8 +40,7 @@ class GuideActivity:BaseVMActivity(),NextClickCallBack {
         else {
             //记录已经不是第一次进来了
             putSpValue("First",false)
-            startActivity(Intent(this,MainActivity::class.java))
-            startActivity(Intent(this,SubscribeActivity::class.java))
+            startActivity(Intent(this,MainActivity::class.java).putExtra("first",true))
             finish()
         }
     }

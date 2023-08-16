@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -54,6 +55,8 @@
         <activity android:name=".ui.SettingActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.WebActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.WebPlayActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.FlashlightActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.WhiteActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.WebPlayPianoActivity" android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>

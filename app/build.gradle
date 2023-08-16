@@ -6,13 +6,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
-    buildToolsVersion "32.0.0"
-
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.pdf.plus.eight"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0.0"
 

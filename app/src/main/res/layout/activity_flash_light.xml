@@ -21,6 +21,7 @@
             android:layout_marginTop="@dimen/status_bar_height"
             app:titleTextColor="@color/white"/>
         <LinearLayout
+            android:id="@+id/ll_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -35,6 +36,13 @@
             <SeekBar
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:maxHeight="8dp"
+                android:minHeight="8dp"
+                android:progress="0"
+                android:thumb="@mipmap/icon_seekbar"
+                android:progressDrawable="@drawable/seekbar_bg"
                 android:layout_height="wrap_content"/>
             <ImageView
                 android:layout_width="wrap_content"
@@ -42,9 +50,10 @@
                 android:src="@mipmap/icon_large"/>
         </LinearLayout>
         <ImageView
+            android:id="@+id/iv_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_dark"
+            android:src="@mipmap/icon_light"
             android:layout_marginTop="60dp"
             android:layout_gravity="center_horizontal"/>
 
@@ -54,15 +63,18 @@
             android:layout_marginStart="54dp"
             android:layout_marginEnd="54dp">
             <ImageView
+                android:id="@+id/iv_sdt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/icon_sdt_on"/>
             <ImageView
+                android:id="@+id/iv_sd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@mipmap/icon_sd_on"/>
+                android:src="@mipmap/icon_sd_off"/>
             <ImageView
+                android:id="@+id/iv_white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
