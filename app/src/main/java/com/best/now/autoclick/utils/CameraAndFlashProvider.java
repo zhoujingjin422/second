@@ -8,24 +8,70 @@ import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.util.Log;
+
+import io.reactivex.Single;
 
 public class CameraAndFlashProvider {
     private static final String TAG = "CameraAndFlashProvider";
     private Camera mCamera;
     private Camera.Parameters parameters;
     private CameraManager camManager;
-    private Context context;
+    private  Context context;
 
     private int level = 2;
-    public CameraAndFlashProvider(Context context) {
+    private HandlerThread mBackgroundThread;
+    private Handler mBackgroundHandler;
+    //创建 Single 的对象
+    private static CameraAndFlashProvider instance;
+    private OnChanged onChanged;
+
+
+    //获取唯一可用的对象
+    public static synchronized CameraAndFlashProvider getInstance(Context context){
+        if (instance==null){
+            instance = new  CameraAndFlashProvider(context);
+        }
+        return instance;
+    }
+    public void setonTorchModeChanged(OnChanged onChanged){
+        this.onChanged = onChanged;
+    }
+    private CameraAndFlashProvider(Context context) {
         this.context = context;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            startBackgroundThread();
+            camManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
+            CameraManager.TorchCallback mTorchCallback =
+                    new CameraManager.TorchCallback() {
+                        @Override
+                        public void onTorchModeUnavailable(String cameraId) {
+
+                        }
+
+                        @Override
+                        public void onTorchModeChanged(String cameraId, boolean enabled) {
+                            super.onTorchModeChanged(cameraId, enabled);
+                            Log.e("onTorchModeChanged",enabled+":"+cameraId);
+                            if (onChanged!=null){
+                                onChanged.change(enabled);
+                            }
+                        }
+                    };
+            camManager.registerTorchCallback(mTorchCallback, mBackgroundHandler);
+        }else{
+            mCamera = Camera.open();
+            parameters = mCamera.getParameters();
+            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+            mCamera.setParameters(parameters);
+        }
     }
 
     public void turnFlashlightOn() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             try {
-                camManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
                 String cameraId = null;
                 if (camManager != null) {
                     cameraId = camManager.getCameraIdList()[0];
@@ -40,10 +86,6 @@ public class CameraAndFlashProvider {
                 Log.e(TAG, e.toString());
             }
         } else {
-            mCamera = Camera.open();
-            parameters = mCamera.getParameters();
-            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-            mCamera.setParameters(parameters);
             mCamera.startPreview();
         }
     }
@@ -71,7 +113,6 @@ public class CameraAndFlashProvider {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             try {
                 String cameraId;
-                camManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
                 if (camManager != null) {
                     cameraId = camManager.getCameraIdList()[0]; // Usually front camera is at 0 position.
                     camManager.setTorchMode(cameraId, false);
@@ -80,11 +121,27 @@ public class CameraAndFlashProvider {
                 e.printStackTrace();
             }
         } else {
-            mCamera = Camera.open();
-            parameters = mCamera.getParameters();
-            parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-            mCamera.setParameters(parameters);
             mCamera.stopPreview();
         }
+    }
+
+    private void startBackgroundThread() {
+        mBackgroundThread = new HandlerThread("CameraBackground");
+        mBackgroundThread.start();
+        mBackgroundHandler = new Handler(mBackgroundThread.getLooper());
+    }
+
+    public void stopBackgroundThread() {
+        mBackgroundThread.quitSafely();
+        try {
+            mBackgroundThread.join();
+            mBackgroundThread = null;
+            mBackgroundHandler = null;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    public interface OnChanged{
+        void change(boolean change);
     }
 }

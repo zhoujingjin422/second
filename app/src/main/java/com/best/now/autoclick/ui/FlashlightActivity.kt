@@ -23,9 +23,15 @@ date:2023/8/15
 class FlashlightActivity:BaseVMActivity() {
     private val binding by binding<ActivityFlashLightBinding>(R.layout.activity_flash_light)
     private lateinit var viewModel: FlashLightViewModel
-    private val cameraAndFlashProvider = CameraAndFlashProvider(this)
+    private lateinit var cameraAndFlashProvider :CameraAndFlashProvider
     override fun initView() {
         viewModel = FlashLightViewModel()
+        cameraAndFlashProvider =CameraAndFlashProvider.getInstance(this)
+        cameraAndFlashProvider.setonTorchModeChanged {
+            if (viewModel.ssOn.value==false){
+                viewModel.lightOn.postValue(it)
+            }
+        }
         binding.apply {
             toolBar.title = "flashlight"
             setSupportActionBar(toolBar)
@@ -95,6 +101,7 @@ class FlashlightActivity:BaseVMActivity() {
                 binding.ivLight.setImageResource(R.mipmap.icon_dark)
                 binding.ivSdt.setImageResource(R.mipmap.icon_sdt_off)
                 cameraAndFlashProvider.turnFlashlightOff()
+                viewModel.ssOn.postValue(false)
             }
         }
         viewModel.ssOn.observe(this){
@@ -128,6 +135,7 @@ class FlashlightActivity:BaseVMActivity() {
     override fun onDestroy() {
         super.onDestroy()
         cameraAndFlashProvider.turnFlashlightOff()
+        cameraAndFlashProvider.stopBackgroundThread()
         viewModel.release()
     }
 }
