@@ -39,6 +39,9 @@ class FlashlightActivity:BaseVMActivity() {
             ivWhite.setOnClickListener {
                 startActivity(Intent(this@FlashlightActivity,WhiteActivity::class.java))
             }
+            ivLight.setOnClickListener {
+                viewModel.lightOn.postValue(!viewModel.lightOn.value!!)
+            }
 //            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 //                llTop.visibility = View.VISIBLE
 //                seekBar.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
@@ -106,7 +109,9 @@ class FlashlightActivity:BaseVMActivity() {
             }else{
                 binding.ivSd.setImageResource(R.mipmap.icon_sd_off)
                 viewModel.release()
-                viewModel.lightOn.postValue(true)
+                if (viewModel.lightOn.value==true){
+                    viewModel.lightOn.postValue(true)
+                }
                 binding.flBottom.visibility = View.GONE
             }
         }

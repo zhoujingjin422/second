@@ -7,7 +7,7 @@ import java.util.Timer
 import java.util.TimerTask
 
 class FlashLightViewModel:ViewModel() {
-    var lightOn = MutableLiveData(true)
+    var lightOn = MutableLiveData(false)
     var ssOn = MutableLiveData(false)
     private  var timer: Timer?=null
     private var onOff = false
