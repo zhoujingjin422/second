@@ -28,7 +28,7 @@ class FlashlightActivity:BaseVMActivity() {
         viewModel = FlashLightViewModel()
         cameraAndFlashProvider =CameraAndFlashProvider.getInstance(this)
         cameraAndFlashProvider.setonTorchModeChanged {
-            if (viewModel.ssOn.value==false){
+            if (viewModel.type.value==1){
                 viewModel.lightOn.postValue(it)
             }
         }
@@ -37,10 +37,22 @@ class FlashlightActivity:BaseVMActivity() {
             setSupportActionBar(toolBar)
             toolBar.setNavigationOnClickListener { finish() }
             ivSdt.setOnClickListener {
-                viewModel.lightOn.postValue(!viewModel.lightOn.value!!)
+                if (viewModel.type.value==1)
+                    return@setOnClickListener
+                viewModel.type.postValue(1)
+                if (viewModel.lightOn.value==true){
+                    viewModel.release()
+                    cameraAndFlashProvider.turnFlashlightOn()
+                }
             }
             ivSd.setOnClickListener {
-                viewModel.ssOn.postValue(!viewModel.ssOn.value!!)
+                if (viewModel.type.value==2)
+                    return@setOnClickListener
+                viewModel.type.postValue(2)
+                if (viewModel.lightOn.value==true){
+                    viewModel.release()
+                    viewModel.startTimer(cameraAndFlashProvider)
+                }
             }
             ivWhite.setOnClickListener {
                 startActivity(Intent(this@FlashlightActivity,WhiteActivity::class.java))
@@ -48,24 +60,6 @@ class FlashlightActivity:BaseVMActivity() {
             ivLight.setOnClickListener {
                 viewModel.lightOn.postValue(!viewModel.lightOn.value!!)
             }
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-//                llTop.visibility = View.VISIBLE
-//                seekBar.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
-//                    override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-//                        cameraAndFlashProvider.changeStrengthLevel(p1)
-//                    }
-//
-//                    override fun onStartTrackingTouch(p0: SeekBar?) {
-//                    }
-//
-//                    override fun onStopTrackingTouch(p0: SeekBar?) {
-//
-//                    }
-//                })
-//            }else{
-//                llTop.visibility = View.GONE
-//            }
-
             flMus.setOnClickListener {
                 if (viewModel.num==1){
                     return@setOnClickListener
@@ -74,8 +68,10 @@ class FlashlightActivity:BaseVMActivity() {
                 if (viewModel.num<1)
                     viewModel.num=1
                 showBottomView()
-                viewModel.release()
-                viewModel.startTimer(cameraAndFlashProvider)
+                if (viewModel.lightOn.value==true){
+                    viewModel.release()
+                    viewModel.startTimer(cameraAndFlashProvider)
+                }
             }
             flAdd.setOnClickListener {
                 if (viewModel.num==5){
@@ -85,8 +81,10 @@ class FlashlightActivity:BaseVMActivity() {
                 if (viewModel.num>5)
                     viewModel.num=5
                 showBottomView()
-                viewModel.release()
-                viewModel.startTimer(cameraAndFlashProvider)
+                if (viewModel.lightOn.value==true){
+                    viewModel.release()
+                    viewModel.startTimer(cameraAndFlashProvider)
+                }
             }
         }
     }
@@ -95,31 +93,33 @@ class FlashlightActivity:BaseVMActivity() {
         viewModel.lightOn.observe(this){
             if (it){
                 binding.ivLight.setImageResource(R.mipmap.icon_light)
-                binding.ivSdt.setImageResource(R.mipmap.icon_sdt_on)
-                cameraAndFlashProvider.turnFlashlightOn()
+                if (viewModel.type.value==1){
+                    cameraAndFlashProvider.turnFlashlightOn()
+                }else{
+                    viewModel.release()
+                    viewModel.startTimer(cameraAndFlashProvider)
+                }
             }else{
                 binding.ivLight.setImageResource(R.mipmap.icon_dark)
-                binding.ivSdt.setImageResource(R.mipmap.icon_sdt_off)
                 cameraAndFlashProvider.turnFlashlightOff()
-                viewModel.ssOn.postValue(false)
+                if (viewModel.type.value==1){
+                    cameraAndFlashProvider.turnFlashlightOff()
+                }else{
+                    viewModel.release()
+                    cameraAndFlashProvider.turnFlashlightOff()
+                }
             }
         }
-        viewModel.ssOn.observe(this){
-            if (it){
-                binding.ivSd.setImageResource(R.mipmap.icon_sd_on)
-                if (viewModel.lightOn.value==false){
-                    viewModel.lightOn.postValue(true)
-                }
-                viewModel.startTimer(cameraAndFlashProvider)
-                binding.flBottom.visibility = View.VISIBLE
-                showBottomView()
-            }else{
+        viewModel.type.observe(this){
+            if (it==1){
+                binding.ivSdt.setImageResource(R.mipmap.icon_sdt_on)
                 binding.ivSd.setImageResource(R.mipmap.icon_sd_off)
-                viewModel.release()
-                if (viewModel.lightOn.value==true){
-                    viewModel.lightOn.postValue(true)
-                }
                 binding.flBottom.visibility = View.GONE
+            }else{
+                binding.ivSd.setImageResource(R.mipmap.icon_sd_on)
+                binding.ivSdt.setImageResource(R.mipmap.icon_sdt_off)
+                showBottomView()
+                binding.flBottom.visibility = View.VISIBLE
             }
         }
     }

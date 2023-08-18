@@ -7,8 +7,8 @@ import java.util.Timer
 import java.util.TimerTask
 
 class FlashLightViewModel:ViewModel() {
+    var type = MutableLiveData(1)
     var lightOn = MutableLiveData(false)
-    var ssOn = MutableLiveData(false)
     private  var timer: Timer?=null
     private var onOff = false
      var num = 1
@@ -16,7 +16,7 @@ class FlashLightViewModel:ViewModel() {
         timer= Timer()
         val timerTask=object : TimerTask(){
             override fun run() {
-                if (ssOn.value==true){
+                if (type.value==2){
                     onOff = !onOff
                     if (onOff){
                         cameraAndFlashProvider.turnFlashlightOn()

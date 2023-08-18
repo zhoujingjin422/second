@@ -70,7 +70,7 @@
                 android:id="@+id/iv_sdt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/icon_sdt_off"/>
+                android:src="@mipmap/icon_sdt_on"/>
             <ImageView
                 android:id="@+id/iv_sd"
                 android:layout_width="wrap_content"
