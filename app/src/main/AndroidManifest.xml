@@ -53,6 +53,8 @@
         <activity android:name="com.best.now.six.ui.WebbbActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.best.now.six.ui.WebPlayyyActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.best.now.six.ui.WebPlayPianoooActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.best.now.six.ui.NoiseActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.best.now.six.ui.CaseActivity" android:screenOrientation="portrait"/>
 
     </application>
     <!--适配华为（huawei）刘海屏-->
