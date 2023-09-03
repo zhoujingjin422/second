@@ -10,10 +10,10 @@ android {
     buildToolsVersion "32.0.0"
 
     defaultConfig {
-        applicationId "com.pdf.pro.six"
+        applicationId "com.pdf.b.six"
         minSdk 21
         targetSdk 32
-        versionCode 5
+        versionCode 1
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -42,7 +42,7 @@ android {
     buildFeatures {
         dataBinding = true
     }
-    namespace 'com.best.now.pdf'
+    namespace 'com.best.now.six'
 }
 
 dependencies {
