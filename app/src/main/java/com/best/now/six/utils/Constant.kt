@@ -5,12 +5,12 @@ date:2022/11/27
  */
 class Constant {
     companion object {
-        const val EVENTDOMAIN = "http://pdf2.vfttuuw.top/"
-        const val APP_PARAMETER = "Pdfsix"
-        const val MIX_PARAMETER = "tsdf34=vbgfes&uytr5fa=nhgfj8&yfs2=qxcdsw1"
-        const val URL_PRIVACY_POLICY = "https://vciacsoym7.feishu.cn/docx/EOw7dERxzoOYIyxvBaycQQ7dn2c"
+        const val EVENTDOMAIN = "http://pdf2.jutvqza.cn/"
+        const val APP_PARAMETER = "Pdfseven"
+        const val MIX_PARAMETER = "recdzsf=hgfd34&wsxcd3a=bhju9&tghy65=edwr21"
+        const val URL_PRIVACY_POLICY = "https://vciacsoym7.feishu.cn/docx/IKcTdvwP2o370kxJjD9cEWGCnbg"
 //        const val URL_TERMS_OF_USE = "https://h73vhyaffj.feishu.cn/docx/UmQ3dJdYPoQbghx3t1LcXhNanTg"
-        const val URL_TRADITIONAL = "http://pdf.vfttuuw.top/pdf/Android/pdfsix/home.html?lang=en"
+        const val URL_TRADITIONAL = "http://pdf.jutvqza.cn/pdf/Android/pdfseven/home.html?lang=en"
         const val VIP_MONTH = "pdfseven_month"
 //        const val VIP_HALF_YEAR = "translator_halfyear"
 //        const val VIP_YEAR = "translator_year"
