@@ -35,7 +35,7 @@ class MainnnActivity : BaseVMActivity() {
                 startActivity(Intent(this@MainnnActivity, SettingggActivity::class.java))
             }
             ivText.setOnClickListener {
-                if (isPurchased(this@MainnnActivity)){
+//                if (isPurchased(this@MainnnActivity)){
                     PermissionX.init(this@MainnnActivity)
                         .permissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .request { allGranted, _, deniedList ->
@@ -48,20 +48,18 @@ class MainnnActivity : BaseVMActivity() {
                             } else {
                                 ToastUtils.showShort("These permissions are denied: $deniedList")
                             }
-                        }
+//                        }
                 }
             }
             ivNoise.setOnClickListener {
-                if (isPurchased(this@MainnnActivity)){
-                    if (isPurchased(this@MainnnActivity)){
+//                    if (isPurchased(this@MainnnActivity)){
                         startActivity(Intent(this@MainnnActivity,NoiseActivity::class.java))
-                    }
-                }
+//                    }
             }
             ivCase.setOnClickListener {
-                if (isPurchased(this@MainnnActivity)){
+//                if (isPurchased(this@MainnnActivity)){
                     startActivity(Intent(this@MainnnActivity,CaseActivity::class.java))
-                }
+//                }
             }
         }
 
