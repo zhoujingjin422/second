@@ -20,7 +20,7 @@ import com.permissionx.guolindev.PermissionX
 
 class MainnnActivity : BaseVMActivity() {
     companion object {
-        var purchased = false
+        var purchased = true
         var purchaseTime = 0L
         var productId = ""
         const val BUS_TAG_BUY_STATE_PURCHASED = "BUS_TAG_BUY_STATE_PURCHASED"
@@ -34,7 +34,7 @@ class MainnnActivity : BaseVMActivity() {
             ivSetting.setOnClickListener {
                 startActivity(Intent(this@MainnnActivity, SettingggActivity::class.java))
             }
-            tvPdf.setOnClickListener {
+            ivText.setOnClickListener {
                 if (isPurchased(this@MainnnActivity)){
                     PermissionX.init(this@MainnnActivity)
                         .permissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -50,20 +50,21 @@ class MainnnActivity : BaseVMActivity() {
                             }
                         }
                 }
-
-
             }
-            tvWeightGo.setOnClickListener {
+            ivNoise.setOnClickListener {
                 if (isPurchased(this@MainnnActivity)){
-                    startActivity(Intent(this@MainnnActivity,WeightRecordddActivity::class.java))
+                    if (isPurchased(this@MainnnActivity)){
+                        startActivity(Intent(this@MainnnActivity,NoiseActivity::class.java))
+                    }
                 }
             }
-            tvProductGo.setOnClickListener {
+            ivCase.setOnClickListener {
                 if (isPurchased(this@MainnnActivity)){
-                    startActivity(Intent(this@MainnnActivity,ProductttActivity::class.java))
+                    startActivity(Intent(this@MainnnActivity,CaseActivity::class.java))
                 }
             }
         }
+
         inPurchaseUtils = InPurchaseUtils(this)
         inPurchaseUtils.conListener = object :InPurchaseUtils.ConnectListener{
             override fun connectSuc() {

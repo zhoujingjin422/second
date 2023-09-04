@@ -19,84 +19,106 @@
             android:layout_marginTop="@dimen/status_bar_height"
             app:title="White Noise Player"
             app:titleTextColor="@color/white"/>
-        <EditText
-            android:id="@+id/et_input"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="215dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/shape_white_back"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginEnd="35dp"
-            android:text="All uppercase"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="@color/white"
-            android:background="@drawable/shape_button_save"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginEnd="35dp"
-            android:text="All lowercase"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="@color/white"
-            android:background="@drawable/shape_button_save"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginEnd="35dp"
-            android:text="Capital letter"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="@color/white"
-            android:background="@drawable/shape_button_save"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginEnd="35dp"
-            android:text="Remove spaces"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="@color/white"
-            android:background="@drawable/shape_button_save"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:layout_marginEnd="35dp"
-            android:layout_marginTop="21dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="50dp"
-                android:text="Remove spaces"
-                android:gravity="center"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:background="@drawable/shape_button_copy"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="50dp"
-                android:text="Remove spaces"
-                android:gravity="center"
-                android:layout_marginStart="16dp"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:background="@drawable/shape_button_clear"/>
-        </LinearLayout>
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/et_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="215dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="start"
+                    android:padding="10dp"
+                    android:hint="Please enter the text"
+                    android:textColorHint="@color/c_616780"
+                    android:textColor="@color/black"
+                    android:background="@drawable/shape_white_back"/>
+                <TextView
+                    android:id="@+id/tv_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="35dp"
+                    android:text="All uppercase"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/shape_button_save"/>
+                <TextView
+                    android:id="@+id/tv_low"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="35dp"
+                    android:text="All lowercase"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/shape_button_save"/>
+                <TextView
+                    android:id="@+id/tv_cap"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="35dp"
+                    android:text="Capital letter"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/shape_button_save"/>
+                <TextView
+                    android:id="@+id/tv_remove"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="35dp"
+                    android:text="Remove spaces"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/shape_button_save"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="35dp"
+                    android:layout_marginTop="21dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_copy"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="50dp"
+                        android:text="Copy"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:background="@drawable/shape_button_copy"/>
+                    <TextView
+                        android:id="@+id/tv_clear"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="50dp"
+                        android:text="Clear"
+                        android:gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:background="@drawable/shape_button_clear"/>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+
     </LinearLayout>
 </layout>

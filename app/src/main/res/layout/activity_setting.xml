@@ -76,7 +76,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintStart_toEndOf="parent"
                             app:layout_constraintBottom_toBottomOf="@id/iv_back"
                             android:paddingStart="17dp"
                             android:visibility="gone"
@@ -87,7 +87,8 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/white"
                                 android:textSize="12sp"
-                                android:layout_marginTop="22dp"
+                                android:layout_marginStart="40dp"
+                                android:layout_marginTop="10dp"
                                 android:gravity="center_vertical"
                                 android:text="Membership valid until：2017-2-12"/>
 
