@@ -20,7 +20,7 @@ import com.permissionx.guolindev.PermissionX
 
 class MainnnActivity : BaseVMActivity() {
     companion object {
-        var purchased = true
+        var purchased = false
         var purchaseTime = 0L
         var productId = ""
         const val BUS_TAG_BUY_STATE_PURCHASED = "BUS_TAG_BUY_STATE_PURCHASED"
@@ -35,7 +35,7 @@ class MainnnActivity : BaseVMActivity() {
                 startActivity(Intent(this@MainnnActivity, SettingggActivity::class.java))
             }
             ivText.setOnClickListener {
-//                if (isPurchased(this@MainnnActivity)){
+                if (isPurchased(this@MainnnActivity)){
                     PermissionX.init(this@MainnnActivity)
                         .permissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .request { allGranted, _, deniedList ->
@@ -48,18 +48,18 @@ class MainnnActivity : BaseVMActivity() {
                             } else {
                                 ToastUtils.showShort("These permissions are denied: $deniedList")
                             }
-//                        }
+                        }
                 }
             }
             ivNoise.setOnClickListener {
-//                    if (isPurchased(this@MainnnActivity)){
+                    if (isPurchased(this@MainnnActivity)){
                         startActivity(Intent(this@MainnnActivity,NoiseActivity::class.java))
-//                    }
+                    }
             }
             ivCase.setOnClickListener {
-//                if (isPurchased(this@MainnnActivity)){
+                if (isPurchased(this@MainnnActivity)){
                     startActivity(Intent(this@MainnnActivity,CaseActivity::class.java))
-//                }
+                }
             }
         }
 
