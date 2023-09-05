@@ -16,10 +16,10 @@ class Constant {
 //        const val VIP_YEAR = "translator_year"
 
         //测试id
-        const val AD_BANNER_ID = "ca-app-pub-3940256099942544/2934735716"
-        const val AD_APP_OPEN_ID = "ca-app-pub-3940256099942544/5662855259"
+//        const val AD_BANNER_ID = "ca-app-pub-3940256099942544/2934735716"
+//        const val AD_APP_OPEN_ID = "ca-app-pub-3940256099942544/5662855259"
         //正式id
-//    const val AD_BANNER_ID =  "ca-app-pub-4727342171424918/1725627820"
-//        const val  AD_APP_OPEN_ID = "ca-app-pub-4727342171424918/4814825597"
+    const val AD_BANNER_ID =  "ca-app-pub-2487126757129429/6619531704"
+        const val  AD_APP_OPEN_ID = "ca-app-pub-2487126757129429/5161860240"
     }
 }
