@@ -145,7 +145,7 @@
 }
 
 ##---------------End: proguard configuration for Gson  ----------
--keep class com.best.now.six.view*
+-keep class com.best.now.seven.view*
 
  #实体类不参与混淆
 -keep class * implements android.os.Parcelable {

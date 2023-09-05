@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#1C231E">
+        android:background="#ED6167">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -58,7 +58,7 @@
                             android:text="Get VIP"
                             android:textSize="15sp"
                             android:textStyle="bold"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
                             android:background="@drawable/shape_button_get_vip"
                             android:layout_marginBottom="43dp"
                             android:visibility="visible"/>
@@ -70,6 +70,7 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             android:layout_marginStart="17dp"
+                            android:visibility="gone"
                             android:layout_marginTop="22dp"/>
                         <LinearLayout
                             android:id="@+id/ll_text"
@@ -121,19 +122,20 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginBottom="10dp"
                             android:orientation="vertical">
-                            <androidx.cardview.widget.CardView
+
+                            <FrameLayout
                                 android:id="@+id/fl_policy"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:cardCornerRadius="20dp"
-                                app:cardBackgroundColor="#3E3E3E">
+                                android:layout_height="wrap_content">
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="15sp"
                                     android:textColor="@color/white"
                                     android:textStyle="bold"
+                                    android:drawableStart="@mipmap/icon_lock"
                                     android:gravity="center_vertical"
+                                    android:drawablePadding="8dp"
                                     android:text="Privacy Policy"
                                     android:padding="16dp"/>
                                 <ImageView
@@ -142,7 +144,13 @@
                                     android:src="@mipmap/me_icon_arrow"
                                     android:layout_gravity="end|center_vertical"
                                     android:layout_marginEnd="22dp"/>
-                            </androidx.cardview.widget.CardView>
+                            </FrameLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginStart="14dp"
+                                android:layout_marginEnd="14dp"
+                                android:background="@color/white"/>
                         </LinearLayout>
 
                 </LinearLayout>

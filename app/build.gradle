@@ -10,7 +10,7 @@ android {
     buildToolsVersion "32.0.0"
 
     defaultConfig {
-        applicationId "com.pdf.b.six"
+        applicationId "com.pdf.c.seven"
         minSdk 21
         targetSdk 32
         versionCode 1
@@ -42,7 +42,7 @@ android {
     buildFeatures {
         dataBinding = true
     }
-    namespace 'com.best.now.six'
+    namespace 'com.best.now.seven'
 }
 
 dependencies {
@@ -80,5 +80,5 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.guolindev.permissionx:permissionx:1.7.1'
     implementation 'io.github.razerdp:BasePopup:3.2.1'
-    implementation 'com.google.android.exoplayer:exoplayer:2.16.1'
+    implementation 'com.github.superSp:RulerView:v1.5'
 }
