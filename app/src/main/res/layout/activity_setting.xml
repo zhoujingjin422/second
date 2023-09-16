@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ED6167">
+        android:background="#F1F9FE">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,7 +22,7 @@
                  android:paddingBottom="20dp"
                  app:title="Setting"
                  android:layout_marginTop="@dimen/status_bar_height"
-                app:titleTextColor="@color/white"/>
+                app:titleTextColor="@color/black"/>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -109,7 +109,7 @@
                                 android:textColor="@color/white"
                                 android:textSize="15sp"
                                 android:layout_gravity="center_horizontal"
-                                android:text="You have unlimited access to all functions"/>
+                                android:text="Now you have access to  all the functions."/>
                         </LinearLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -120,6 +120,7 @@
                             android:layout_marginStart="15dp"
                             android:layout_marginEnd="15dp"
                             android:layout_marginTop="16dp"
+                            android:background="@color/white"
                             android:layout_marginBottom="10dp"
                             android:orientation="vertical">
 
@@ -131,11 +132,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="15sp"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/black"
                                     android:textStyle="bold"
-                                    android:drawableStart="@mipmap/icon_lock"
                                     android:gravity="center_vertical"
-                                    android:drawablePadding="8dp"
                                     android:text="Privacy Policy"
                                     android:padding="16dp"/>
                                 <ImageView

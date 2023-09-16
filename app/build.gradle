@@ -9,10 +9,10 @@ android {
     compileSdkVersion 33
 
     defaultConfig {
-        applicationId "com.pdf.c.seven"
+        applicationId "com.pdf.eight.pro"
         minSdk 21
         targetSdk 33
-        versionCode 3
+        versionCode 1
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -41,7 +41,7 @@ android {
     buildFeatures {
         dataBinding = true
     }
-    namespace 'com.best.now.seven'
+    namespace 'com.best.now.eight'
 }
 
 dependencies {
@@ -79,5 +79,5 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.guolindev.permissionx:permissionx:1.7.1'
     implementation 'io.github.razerdp:BasePopup:3.2.1'
-    implementation 'com.github.superSp:RulerView:v1.5'
+    implementation 'com.github.getActivity:ShapeView:8.2'
 }
