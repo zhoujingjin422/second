@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.best.now.eight">
+    package="com.best.now.nine">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.vending.BILLING" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:requestLegacyExternalStorage="true"
-        android:name="com.best.now.eight.AutoClickkkApplication"
+        android:name=".AutoClickkkApplication"
         android:theme="@style/Theme.AutoClick">
 <!--        测试-->
         <meta-data
@@ -38,7 +38,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
         <activity
-            android:name="com.best.now.eight.ui.SplashhhActivity"
+            android:name=".ui.SplashhhActivity"
             android:theme="@style/start_theme"
             android:exported="true">
             <intent-filter>
@@ -46,16 +46,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.best.now.eight.ui.GuideeeActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.best.now.eight.ui.MainnnActivity" android:screenOrientation="portrait" />
-        <activity android:name="com.best.now.eight.ui.SubscribeeeActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.best.now.eight.ui.SettingggActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.best.now.eight.ui.WebbbActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.best.now.eight.ui.WebPlayyyActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.best.now.eight.ui.WebPlayPianoooActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.best.now.eight.ui.PassWordActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateVisible|adjustResize"/>
-        <activity android:name="com.best.now.eight.ui.JournalActivity" android:screenOrientation="portrait"/>
-        <activity android:name="com.best.now.eight.ui.JournalListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.GuideeeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.MainnnActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ui.SubscribeeeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.SettingggActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.WebbbActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.WebPlayyyActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.WebPlayPianoooActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.ImageActivity" android:screenOrientation="portrait"/>
 
     </application>
     <!--适配华为（huawei）刘海屏-->

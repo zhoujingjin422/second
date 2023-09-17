@@ -9,7 +9,7 @@ android {
     compileSdkVersion 33
 
     defaultConfig {
-        applicationId "com.pdf.eight.pro"
+        applicationId "com.pdf.nine.plus"
         minSdk 21
         targetSdk 33
         versionCode 1
@@ -41,7 +41,7 @@ android {
     buildFeatures {
         dataBinding = true
     }
-    namespace 'com.best.now.eight'
+    namespace 'com.best.now.nine'
 }
 
 dependencies {
@@ -57,7 +57,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation 'com.geyifeng.immersionbar:immersionbar:3.2.2'
     implementation 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
     implementation 'org.koin:koin-androidx-viewmodel:2.0.1'
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.6"
     api 'com.wang.avi:library:2.1.3'
@@ -80,4 +79,8 @@ dependencies {
     implementation 'com.guolindev.permissionx:permissionx:1.7.1'
     implementation 'io.github.razerdp:BasePopup:3.2.1'
     implementation 'com.github.getActivity:ShapeView:8.2'
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0' // 根据最新版本进行更新
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0' // 根据最新版本进行更新
+
 }

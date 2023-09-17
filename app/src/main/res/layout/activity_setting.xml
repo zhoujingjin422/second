@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F1F9FE">
+        android:background="@color/white">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -58,7 +58,7 @@
                             android:text="Get VIP"
                             android:textSize="15sp"
                             android:textStyle="bold"
-                            android:textColor="@color/black"
+                            android:textColor="#FF7861"
                             android:background="@drawable/shape_button_get_vip"
                             android:layout_marginBottom="43dp"
                             android:visibility="visible"/>
@@ -132,24 +132,27 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="15sp"
-                                    android:textColor="@color/black"
+                                    android:textColor="@color/c_333333"
                                     android:textStyle="bold"
+                                    android:drawableStart="@mipmap/icon_lock"
                                     android:gravity="center_vertical"
+                                    android:drawablePadding="8dp"
                                     android:text="Privacy Policy"
                                     android:padding="16dp"/>
+
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@mipmap/me_icon_arrow"
                                     android:layout_gravity="end|center_vertical"
-                                    android:layout_marginEnd="22dp"/>
+                                    android:layout_marginEnd="22dp"
+                                    android:src="@mipmap/me_icon_arrow" />
                             </FrameLayout>
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
                                 android:layout_marginStart="14dp"
                                 android:layout_marginEnd="14dp"
-                                android:background="@color/white"/>
+                                android:background="#979797"/>
                         </LinearLayout>
 
                 </LinearLayout>
