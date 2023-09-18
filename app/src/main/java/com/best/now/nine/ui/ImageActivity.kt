@@ -33,20 +33,19 @@ date:2023/9/17
 class ImageActivity:BaseVMActivity() {
     private val binding by binding<ActivityImageBinding>(R.layout.activity_image)
     private var type = 80
+    private var showSelect:Boolean = false
     override fun initView() {
+        showSelect = intent.getBooleanExtra("showSelect",false)
         binding.apply {
             setSupportActionBar(toolBar)
             toolBar.setNavigationOnClickListener { finish() }
             addSave.setOnClickListener {
-                if (selectedImageBitmap==null){
-                    val intent =  Intent(Intent.ACTION_PICK, null);
-                    intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-                    startActivityForResult(intent, 2)
+                if (!showSelect){
+                   startActivity(Intent(this@ImageActivity,ImageActivity::class.java).putExtra("showSelect",true))
                 }else{
                     selectedImageBitmap?.let {
                         saveCompressedImage(it,type)
                     }
-
                 }
             }
             high.isSelected = type==80
@@ -77,9 +76,13 @@ class ImageActivity:BaseVMActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode==2&&resultCode== RESULT_OK){
-            val selectedImageUri = data?.data
-            setImage(selectedImageUri)
+        if (requestCode==2){
+            if(resultCode== RESULT_OK){
+                val selectedImageUri = data?.data
+                setImage(selectedImageUri)
+            }else{
+                finish()
+            }
         }
     }
 
@@ -178,6 +181,11 @@ class ImageActivity:BaseVMActivity() {
         return imageSize/1024
     }
     override fun initData() {
+        if (showSelect){
+            val intent =  Intent(Intent.ACTION_PICK, null);
+            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+            startActivityForResult(intent, 2)
+        }
     }
 
     override fun onDestroy() {
