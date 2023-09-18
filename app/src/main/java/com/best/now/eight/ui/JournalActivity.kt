@@ -8,6 +8,7 @@ import com.best.now.eight.databinding.ActivityJournalBinding
 import com.best.now.eight.ext.getSpValue
 import com.best.now.eight.ext.putSpValue
 import com.blankj.utilcode.util.BusUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.Calendar
@@ -43,6 +44,10 @@ class JournalActivity:BaseVMActivity() {
                 finish()
             }
             tvSave.setOnClickListener {
+                if (data.title.isEmpty()){
+                    ToastUtils.showShort("The title can not be blank")
+                    return@setOnClickListener
+                }
                 //保存
                 if (list.isEmpty()){
                     list.add(data)

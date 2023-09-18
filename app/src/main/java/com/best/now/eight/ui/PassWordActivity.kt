@@ -70,6 +70,8 @@ class PassWordActivity:BaseVMActivity() {
                             if (setPassWord){
                                 startActivity(Intent(this@PassWordActivity,JournalListActivity::class.java))
                                 finish()
+                            }else{
+                                finish()
                             }
                         } else{
                             if (it.toString() == getSpValue("password", "")){
