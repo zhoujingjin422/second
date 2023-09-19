@@ -12,6 +12,7 @@ import com.best.now.nine.ext.getSpValue
 import com.best.now.nine.utils.ActionHelper
 import com.best.now.nine.utils.Constant
 import com.best.now.nine.utils.InPurchaseUtils
+import com.best.now.nine.utils.isPurchased
 import com.best.now.nine.utils.loadAd
 import com.blankj.utilcode.util.BusUtils
 import com.blankj.utilcode.util.GsonUtils
@@ -20,7 +21,7 @@ import com.permissionx.guolindev.PermissionX
 
 class MainnnActivity : BaseVMActivity() {
     companion object {
-        var purchased = true
+        var purchased = false
         var purchaseTime = 0L
         var productId = ""
         const val BUS_TAG_BUY_STATE_PURCHASED = "BUS_TAG_BUY_STATE_PURCHASED"
@@ -36,7 +37,7 @@ class MainnnActivity : BaseVMActivity() {
                 startActivity(Intent(this@MainnnActivity, SettingggActivity::class.java))
             }
             ivText.setOnClickListener {
-//                if (isPurchased(this@MainnnActivity)){
+                if (isPurchased(this@MainnnActivity)){
                     PermissionX.init(this@MainnnActivity)
                         .permissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .request { allGranted, _, deniedList ->
@@ -50,10 +51,10 @@ class MainnnActivity : BaseVMActivity() {
                                 ToastUtils.showShort("These permissions are denied: $deniedList")
                             }
                         }
-//                }
+                }
             }
             ivNoise.setOnClickListener {
-//                    if (isPurchased(this@MainnnActivity)){
+                    if (isPurchased(this@MainnnActivity)){
                 PermissionX.init(this@MainnnActivity)
                     .permissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     .request { allGranted, _, deniedList ->
@@ -63,7 +64,7 @@ class MainnnActivity : BaseVMActivity() {
                             ToastUtils.showShort("These permissions are denied: $deniedList")
                         }
                     }
-//                    }
+                    }
             }
         }
 
