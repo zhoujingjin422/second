@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/home_back">
+        android:background="@drawable/main_back">
 
         <TextView
             android:id="@+id/tv_sub_title"
@@ -21,7 +21,7 @@
             android:text="Resume Purchase"
             android:layout_marginStart="23dp"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
@@ -56,77 +56,13 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="27dp"
-                            android:layout_marginEnd="20dp">
-                            <ImageView
-                                android:id="@+id/iv_women"
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:scaleType="centerCrop"
-                                android:src="@mipmap/icon_women"/>
-                            <LinearLayout
-                                android:id="@+id/ll_women"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="6dp"
-                                android:layout_toEndOf="@id/iv_women">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/white"
-                                    android:textStyle="bold"
-                                    android:textSize="15sp"
-                                    android:text="Lily"/>
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@mipmap/icon_star"
-                                    android:layout_gravity="end|center_vertical"
-                                    android:layout_marginStart="10dp"/>
-                            </LinearLayout>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/ll_women"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginEnd="7dp"
-                                android:textColor="@color/white"
-                                android:textSize="12sp"
-                                android:layout_toEndOf="@id/iv_women"
-                                android:text="o many format conversion software, you can also try it for free, very convenient and conscience" />
-                        </RelativeLayout>
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
                         android:layout_marginTop="15dp"
                         android:scaleType="fitXY"
-                        android:src="@mipmap/icon_offer"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Try us for 7 days-free!"
-                        android:textSize="16sp"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"/>
-                   <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="No commitment. Cancel anytime."
-                        android:textSize="12sp"
-                        android:textColor="#66ffffff"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="5dp"/>
-                    <FrameLayout
+                        android:src="@drawable/sub_content"/>
+                          <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintStart_toStartOf="parent"

@@ -40,7 +40,7 @@ class SubscribeActivity:BaseVMActivity() {
     }
 
     override fun initData() {
-        ActionHelper.doAction("sellpage")
+//        ActionHelper.doAction("sellpage")
     }
     @BusUtils.Bus(tag = BUS_TAG_BUY_STATE_PURCHASED)
     fun purchase(purchase: Purchase) {

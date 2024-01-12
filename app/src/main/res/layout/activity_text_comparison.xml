@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#D5FC51"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            app:navigationIcon="@drawable/icon_back"
+            android:paddingBottom="20dp"
+            android:layout_marginTop="@dimen/status_bar_height"
+            app:title="Text Content Comparison"
+            app:titleTextColor="@color/black"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="120dp"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:text="Text content 1"
+                    android:background="@drawable/shape_black"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="44dp"/>
+                <EditText
+                    android:id="@+id/et_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:hint="Please enter the text to compare 1"
+                    android:textColor="@color/c_333333"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:background="@drawable/shape_edit_white"/>
+                <TextView
+                    android:layout_width="120dp"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:text="Text content 2"
+                    android:background="@drawable/shape_black"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="44dp"/>
+                <EditText
+                    android:id="@+id/et_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="Please enter the text to compare 2"
+                    android:textColor="@color/c_333333"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:background="@drawable/shape_edit_white"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_comparison"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:text="Comparison"
+                        android:background="@drawable/shape_blue"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="44dp"/>
+                     <TextView
+                        android:id="@+id/tv_clear"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:text="Clear"
+                        android:background="@drawable/shape_orange"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="44dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

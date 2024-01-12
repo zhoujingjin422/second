@@ -16,52 +16,46 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/home_back"
+            android:background="@drawable/main_back"
             app:layout_constraintBottom_toTopOf="@id/adv_banner">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:layout_marginTop="286dp"
-                android:background="@drawable/shape_corner_home">
+                android:background="@drawable/shape_corner_home"
+                android:paddingBottom="50dp"
+                android:orientation="vertical">
 
-                            <ImageView
-                                android:id="@+id/iv_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/iv_text"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginEnd="20dp"
-                                android:layout_marginTop="23dp"
-                                android:scaleType="fitXY"/>
-                <FrameLayout
+                <ImageView
+                    android:id="@+id/iv_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="35dp"
-                    android:layout_marginTop="29dp"
-                    android:layout_marginBottom="20dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Other tools"
-                        android:textSize="18sp"
-                        android:textColor="@color/white"/>
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="23dp"
+                    android:layout_marginEnd="20dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/home_pdf" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/iv_replace"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/me_icon_arrow_white"
-                        android:layout_gravity="end|center_vertical"/>
-                </FrameLayout>
-                            <ImageView
-                                android:id="@+id/iv_voice"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/iv_voice"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginEnd="20dp"
-                                android:scaleType="fitXY"/>
-                        </LinearLayout>
+                        android:src="@drawable/image_replace"
+                        android:layout_weight="1"/>
+                    <ImageView
+                        android:id="@+id/iv_comparison"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/image_comparison"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+
+            </LinearLayout>
         </androidx.core.widget.NestedScrollView>
         <ImageView
             android:id="@+id/iv_setting"
@@ -71,7 +65,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="40dp"
-            android:src="@mipmap/icon_my_setting"/>
+            android:src="@drawable/icon_my_setting"/>
         <LinearLayout
             android:id="@+id/adv_banner"
             android:layout_width="match_parent"

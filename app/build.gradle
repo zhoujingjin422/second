@@ -8,10 +8,10 @@ plugins {
 android {
     compileSdkVersion 33
     defaultConfig {
-        applicationId "com.pdf.plus.eight"
+        applicationId "com.pdf.twelve.plus"
         minSdk 21
         targetSdk 32
-        versionCode 6
+        versionCode 1
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

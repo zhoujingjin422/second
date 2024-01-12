@@ -27,7 +27,7 @@ import com.permissionx.guolindev.PermissionX
 
 class MainActivity : BaseVMActivity() {
     companion object {
-        var purchased = false
+        var purchased = true
         var purchaseTime = 0L
         var productId = ""
         const val BUS_TAG_BUY_STATE_PURCHASED = "BUS_TAG_BUY_STATE_PURCHASED"
@@ -58,17 +58,14 @@ class MainActivity : BaseVMActivity() {
                         }
                 }
             }
-            ivVoice.setOnClickListener {
+            ivReplace.setOnClickListener {
                 if (isPurchased(this@MainActivity)){
-                    PermissionX.init(this@MainActivity)
-                        .permissions(Manifest.permission.CAMERA)
-                        .request { allGranted, _, deniedList ->
-                            if (allGranted) {
-                                startActivity(Intent(this@MainActivity,FlashlightActivity::class.java))
-                            } else {
-                                ToastUtils.showShort("These permissions are denied: $deniedList")
-                            }
-                        }
+                    startActivity(Intent(this@MainActivity,TextReplaceActivity::class.java))
+                }
+            }
+            ivComparison.setOnClickListener {
+                if (isPurchased(this@MainActivity)){
+                    startActivity(Intent(this@MainActivity,TextComparisonActivity::class.java))
                 }
             }
         }
@@ -90,7 +87,7 @@ class MainActivity : BaseVMActivity() {
         purchased = true
         purchaseTime = purchase.purchaseTime
         productId = GsonUtils.toJson(purchase.skus)
-        ActionHelper.doAction("buy_success")
+//        ActionHelper.doAction("buy_success")
 
     }
 

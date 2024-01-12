@@ -30,7 +30,7 @@
 <!--        正式-->
 <!--        <meta-data-->
 <!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-<!--            android:value="ca-app-pub-1475683683386191~5903448508" />-->
+<!--            android:value="ca-app-pub-5793640977412619~7249189618" />-->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}"
@@ -55,8 +55,10 @@
         <activity android:name=".ui.SettingActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.WebActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.WebPlayActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.FlashlightActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.WhiteActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.TextReplaceActivity" android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:name=".ui.TextComparisonActivity" android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity android:name=".ui.WebPlayPianoActivity" android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
