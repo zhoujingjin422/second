@@ -42,7 +42,7 @@ class MainActivity : BaseVMActivity() {
                 startActivity(Intent(this@MainActivity, SettingActivity::class.java))
             }
             ivText.setOnClickListener {
-                if (isPurchased(this@MainActivity)){
+//                if (isPurchased(this@MainActivity)){
                     PermissionX.init(this@MainActivity)
                         .permissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .request { allGranted, _, deniedList ->
@@ -56,17 +56,17 @@ class MainActivity : BaseVMActivity() {
                                 ToastUtils.showShort("These permissions are denied: $deniedList")
                             }
                         }
-                }
+//                }
             }
             ivReplace.setOnClickListener {
-                if (isPurchased(this@MainActivity)){
+//                if (isPurchased(this@MainActivity)){
                     startActivity(Intent(this@MainActivity,TextReplaceActivity::class.java))
-                }
+//                }
             }
             ivComparison.setOnClickListener {
-                if (isPurchased(this@MainActivity)){
+//                if (isPurchased(this@MainActivity)){
                     startActivity(Intent(this@MainActivity,TextComparisonActivity::class.java))
-                }
+//                }
             }
         }
         inPurchaseUtils = InPurchaseUtils(this)
@@ -78,7 +78,7 @@ class MainActivity : BaseVMActivity() {
     }
     override fun initData() {
         loadAd(binding.advBanner)
-        if (intent.getBooleanExtra("first",false)){
+        if (intent.getBooleanExtra("first",false)&&!purchased){
             startActivity(Intent(this,SubscribeActivity::class.java))
         }
     }
