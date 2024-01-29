@@ -27,7 +27,7 @@ import com.permissionx.guolindev.PermissionX
 
 class MainActivity : BaseVMActivity() {
     companion object {
-        var purchased = false
+        var purchased = true
         var purchaseTime = 0L
         var productId = ""
         const val BUS_TAG_BUY_STATE_PURCHASED = "BUS_TAG_BUY_STATE_PURCHASED"
@@ -60,12 +60,12 @@ class MainActivity : BaseVMActivity() {
             }
             ivReplace.setOnClickListener {
                 if (isPurchased(this@MainActivity)){
-                    startActivity(Intent(this@MainActivity,TextReplaceActivity::class.java))
+                    startActivity(Intent(this@MainActivity,QuadrantListActivity::class.java))
                 }
             }
             ivComparison.setOnClickListener {
                 if (isPurchased(this@MainActivity)){
-                    startActivity(Intent(this@MainActivity,TextComparisonActivity::class.java))
+                    startActivity(Intent(this@MainActivity,QuadrantListActivity::class.java))
                 }
             }
         }
