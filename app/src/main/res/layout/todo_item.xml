@@ -10,7 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="jjkkkk"
-        android:textColor="@color/c_333333"
+        android:textColor="#443734"
+        android:padding="5dp"
         android:textSize="15sp"
+        android:layout_marginStart="10dp"
+        style="@style/checkbox1"
         android:layout_marginTop="6dp"/>
 </layout>

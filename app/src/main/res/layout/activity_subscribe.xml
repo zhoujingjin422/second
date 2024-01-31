@@ -21,7 +21,7 @@
             android:text="Resume Purchase"
             android:layout_marginStart="23dp"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
@@ -36,7 +36,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="40dp"
-            android:src="@mipmap/icon_close"/>
+            android:src="@drawable/icon_close"/>
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -47,7 +47,7 @@
             android:layout_marginTop="200dp"
             app:cardElevation="2dp"
             app:cardCornerRadius="30dp"
-            app:cardBackgroundColor="@color/black">
+            app:cardBackgroundColor="#3548EA">
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -62,14 +62,17 @@
                         android:layout_marginTop="15dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/sub_content"/>
-                          <FrameLayout
+
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="20dp"
                         android:layout_marginBottom="20dp"
-                        android:layout_marginTop="7dp">
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
                         <ImageView
                             android:id="@+id/next"
                             android:layout_width="match_parent"

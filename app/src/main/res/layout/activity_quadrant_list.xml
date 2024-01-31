@@ -18,7 +18,7 @@
             app:navigationIcon="@drawable/icon_back"
             android:paddingBottom="20dp"
             android:layout_marginTop="@dimen/status_bar_height"
-            app:title="Text Content Comparison"
+            app:title="Quadrant List"
             app:titleTextColor="@color/white"/>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -143,16 +143,19 @@
                 app:layout_constraintStart_toEndOf="@id/topLeftLayout"
                 app:layout_constraintTop_toBottomOf="@id/topLeftLayout" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
+            <TextView
                 android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginBottom="30dp"
-                android:layout_marginEnd="20dp"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                android:gravity="center"
                 android:text="+"
-                android:backgroundTint="@color/black"/>
+                android:background="@drawable/circle_black"
+                android:layout_marginEnd="20dp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

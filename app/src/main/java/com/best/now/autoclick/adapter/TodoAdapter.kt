@@ -24,6 +24,7 @@ class TodoAdapter(val type:Int):BaseQuickAdapter<ContentBean, BaseDataBindingHol
             cb.isChecked = item.done
             if (item.done){
                 cb.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
+                cb.isClickable = false
             }else{
                 cb.paint.flags = 0
             }
@@ -31,6 +32,7 @@ class TodoAdapter(val type:Int):BaseQuickAdapter<ContentBean, BaseDataBindingHol
                 item.done = b
                 if (item.done){
                     cb.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG
+                    cb.isClickable = false
                 }else{
                     cb.paint.flags = 0
                 }

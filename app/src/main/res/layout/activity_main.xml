@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/main_back">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
@@ -16,14 +17,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/main_back"
+            android:layout_marginTop="286dp"
+            android:background="@drawable/shape_corner_home"
             app:layout_constraintBottom_toTopOf="@id/adv_banner">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="286dp"
-                android:background="@drawable/shape_corner_home"
                 android:paddingBottom="50dp"
                 android:orientation="vertical">
 
@@ -45,27 +45,18 @@
                         android:id="@+id/iv_replace"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/image_replace"
+                        android:src="@drawable/image_qulist"
                         android:layout_weight="1"/>
                     <ImageView
                         android:id="@+id/iv_comparison"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/image_comparison"
+                        android:src="@drawable/image_setting"
                         android:layout_weight="1"/>
                 </LinearLayout>
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-        <ImageView
-            android:id="@+id/iv_setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="40dp"
-            android:src="@drawable/icon_my_setting"/>
         <LinearLayout
             android:id="@+id/adv_banner"
             android:layout_width="match_parent"

@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.best.now.autoclick.BaseVMActivity
 import com.best.now.autoclick.R
 import com.best.now.autoclick.adapter.TodoAdapter
+import com.best.now.autoclick.adapter.TodoAdapter2
+import com.best.now.autoclick.adapter.TodoAdapter3
+import com.best.now.autoclick.adapter.TodoAdapter4
 import com.best.now.autoclick.bean.ContentBean
 import com.best.now.autoclick.databinding.ActivityQuadrantListBinding
 import com.best.now.autoclick.ext.getSpValue
@@ -24,9 +27,9 @@ class QuadrantListActivity: BaseVMActivity() {
     private var crossAreaOriginalLeft = 0
     private var crossAreaOriginalTop = 0
     private var adapter1:TodoAdapter? = null
-    private var adapter2:TodoAdapter? = null
-    private var adapter3:TodoAdapter? = null
-    private var adapter4:TodoAdapter? = null
+    private var adapter2:TodoAdapter2? = null
+    private var adapter3:TodoAdapter3? = null
+    private var adapter4:TodoAdapter4? = null
     @SuppressLint("ClickableViewAccessibility")
     override fun initView() {
         binding.apply {
@@ -60,10 +63,11 @@ class QuadrantListActivity: BaseVMActivity() {
                         val parentWidth = (crossArea.parent as ConstraintLayout).width
                         val parentHeight = (crossArea.parent as ConstraintLayout).height
 
-//                        val topLeftLayoutParams = topLeftLayout.layoutParams as ConstraintLayout.LayoutParams
-//                        topLeftLayoutParams.matchConstraintPercentWidth = (newRight - newLeft).toFloat() / parentWidth.toFloat()
-//                        topLeftLayoutParams.matchConstraintPercentHeight = (newBottom - newTop).toFloat() / parentHeight.toFloat()
-                        topLeftLayout.layout(0, 0, newLeft, newTop)
+                        val topLeftLayoutParams = topLeftLayout.layoutParams as ConstraintLayout.LayoutParams
+                        topLeftLayoutParams.matchConstraintPercentWidth = newLeft.toFloat() / parentWidth.toFloat()
+                        topLeftLayoutParams.matchConstraintPercentHeight = newTop.toFloat() / parentHeight.toFloat()
+                        topLeftLayout.layoutParams = topLeftLayoutParams
+//                        topLeftLayout.layout(0, 0, newLeft, newTop)
 //                        topLeftLayout.invalidate()
 //                        for (i in 0 until topLeftLayout.childCount){
 //                           val tv1 = topLeftLayout.getChildAt(i) as TextView
@@ -71,22 +75,26 @@ class QuadrantListActivity: BaseVMActivity() {
 //                            tv1.text = "Important and urgent"
 //                        }
                         // Update topRightLayout
-//                        val topRightLayoutParams = topRightLayout.layoutParams as ConstraintLayout.LayoutParams
-//                        topRightLayoutParams.matchConstraintPercentWidth = 1.0f - topLeftLayoutParams.matchConstraintPercentWidth
-//                        topRightLayoutParams.matchConstraintPercentHeight = topLeftLayoutParams.matchConstraintPercentHeight
-                        topRightLayout.layout(newRight,  0, parentWidth, newTop)
+                        val topRightLayoutParams = topRightLayout.layoutParams as ConstraintLayout.LayoutParams
+                        topRightLayoutParams.matchConstraintPercentWidth = (parentWidth-newRight).toFloat() / parentWidth.toFloat()
+                        topRightLayoutParams.matchConstraintPercentHeight = topLeftLayoutParams.matchConstraintPercentHeight
+                        topRightLayout.layoutParams = topRightLayoutParams
+//                        topRightLayout.layout(newRight,  0, parentWidth, newTop)
 
                         // Update bottomLeftLayout
-//                        val bottomLeftLayoutParams = bottomLeftLayout.layoutParams as ConstraintLayout.LayoutParams
-//                        bottomLeftLayoutParams.matchConstraintPercentWidth = topLeftLayoutParams.matchConstraintPercentWidth
-//                        bottomLeftLayoutParams.matchConstraintPercentHeight = 1.0f - topLeftLayoutParams.matchConstraintPercentHeight
-                        bottomLeftLayout.layout(0, newBottom, newLeft, parentHeight)
+                        val bottomLeftLayoutParams = bottomLeftLayout.layoutParams as ConstraintLayout.LayoutParams
+                        bottomLeftLayoutParams.matchConstraintPercentWidth = topLeftLayoutParams.matchConstraintPercentWidth
+                        bottomLeftLayoutParams.matchConstraintPercentHeight = (parentHeight-newBottom).toFloat() / parentHeight.toFloat()
+//                        bottomLeftLayout.layout(0, newBottom, newLeft, parentHeight)
+                        bottomLeftLayout.layoutParams = bottomLeftLayoutParams
 
                         // Update bottomRightLayout
-//                        val bottomRightLayoutParams = bottomRightLayout.layoutParams as ConstraintLayout.LayoutParams
-//                        bottomRightLayoutParams.matchConstraintPercentWidth = 1.0f - topLeftLayoutParams.matchConstraintPercentWidth
-//                        bottomRightLayoutParams.matchConstraintPercentHeight = 1.0f - topLeftLayoutParams.matchConstraintPercentHeight
-                        bottomRightLayout.layout(newRight, newBottom, parentWidth, parentHeight)
+                        val bottomRightLayoutParams = bottomRightLayout.layoutParams as ConstraintLayout.LayoutParams
+                        bottomRightLayoutParams.matchConstraintPercentWidth = topRightLayoutParams.matchConstraintPercentWidth
+                        bottomRightLayoutParams.matchConstraintPercentHeight = bottomLeftLayoutParams.matchConstraintPercentHeight
+//                        bottomRightLayout.layout(newRight, newBottom, parentWidth, parentHeight)
+                        bottomRightLayout.layoutParams = bottomRightLayoutParams
+
                     }
                 }
                 true
@@ -96,9 +104,9 @@ class QuadrantListActivity: BaseVMActivity() {
             rvUni.layoutManager = LinearLayoutManager(this@QuadrantListActivity)
             rvNuni.layoutManager = LinearLayoutManager(this@QuadrantListActivity)
             adapter1 = TodoAdapter(1)
-            adapter2 = TodoAdapter(2)
-            adapter3 = TodoAdapter(3)
-            adapter4 = TodoAdapter(4)
+            adapter2 = TodoAdapter2(2)
+            adapter3 = TodoAdapter3(3)
+            adapter4 = TodoAdapter4(4)
             rvIu.adapter = adapter1
             rvInu.adapter = adapter2
             rvUni.adapter = adapter3

@@ -5,6 +5,7 @@ import com.best.now.autoclick.R
 import com.best.now.autoclick.bean.ContentBean
 import com.best.now.autoclick.databinding.ActivityNewtodoContentBinding
 import com.best.now.autoclick.databinding.ActivityQuadrantListBinding
+import com.best.now.autoclick.dialog.SuccessfullyPop
 import com.best.now.autoclick.ext.getSpValue
 import com.best.now.autoclick.ext.putSpValue
 import com.blankj.utilcode.util.GsonUtils
@@ -50,7 +51,8 @@ class NewToDoContentActivity: BaseVMActivity() {
             }
             ivSave.setOnClickListener {
                 if (etStart.text.toString().trim().isEmpty()){
-                    ToastUtils.showShort("Please enter the complete to-do event content")
+                    SuccessfullyPop(this@NewToDoContentActivity,1).showPopupWindow()
+//                    ToastUtils.showShort("Please enter the complete to-do event content")
                     return@setOnClickListener
                 }
 
@@ -59,7 +61,8 @@ class NewToDoContentActivity: BaseVMActivity() {
                 val content = ContentBean(false,etStart.text.toString())
                 contentList.add(content)
                 putSpValue("content${type}",GsonUtils.getGson().toJson(contentList))
-                ToastUtils.showShort("Successfully saved")
+                SuccessfullyPop(this@NewToDoContentActivity).showPopupWindow()
+//                ToastUtils.showShort("Successfully saved")
                 etStart.setText("")
             }
         }

@@ -38,9 +38,6 @@ class MainActivity : BaseVMActivity() {
     @SuppressLint("SuspiciousIndentation")
     override fun initView() {
         binding.apply {
-            ivSetting.setOnClickListener {
-                startActivity(Intent(this@MainActivity, SettingActivity::class.java))
-            }
             ivText.setOnClickListener {
                 if (isPurchased(this@MainActivity)){
                     PermissionX.init(this@MainActivity)
@@ -65,7 +62,7 @@ class MainActivity : BaseVMActivity() {
             }
             ivComparison.setOnClickListener {
                 if (isPurchased(this@MainActivity)){
-                    startActivity(Intent(this@MainActivity,QuadrantListActivity::class.java))
+                    startActivity(Intent(this@MainActivity, SettingActivity::class.java))
                 }
             }
         }
