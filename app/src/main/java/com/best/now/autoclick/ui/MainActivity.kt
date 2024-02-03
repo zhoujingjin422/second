@@ -27,7 +27,7 @@ import com.permissionx.guolindev.PermissionX
 
 class MainActivity : BaseVMActivity() {
     companion object {
-        var purchased = true
+        var purchased = false
         var purchaseTime = 0L
         var productId = ""
         const val BUS_TAG_BUY_STATE_PURCHASED = "BUS_TAG_BUY_STATE_PURCHASED"
@@ -61,9 +61,7 @@ class MainActivity : BaseVMActivity() {
                 }
             }
             ivComparison.setOnClickListener {
-                if (isPurchased(this@MainActivity)){
-                    startActivity(Intent(this@MainActivity, SettingActivity::class.java))
-                }
+                startActivity(Intent(this@MainActivity, SettingActivity::class.java))
             }
         }
         inPurchaseUtils = InPurchaseUtils(this)
