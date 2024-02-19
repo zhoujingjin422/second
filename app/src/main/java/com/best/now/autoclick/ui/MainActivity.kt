@@ -9,16 +9,20 @@ import android.os.Looper
 import android.os.Message
 import android.view.View
 import android.widget.Toast
-import com.android.billingclient.api.*
+import androidx.fragment.app.Fragment
+//import com.android.billingclient.api.*
 import com.best.now.autoclick.BaseVMActivity
 import com.best.now.autoclick.R
 import com.best.now.autoclick.databinding.ActivityMainBinding
+import com.best.now.autoclick.dialog.ServeAndPrivatePop
+import com.best.now.autoclick.ext.getSpValue
 import com.best.now.autoclick.utils.ActionHelper
 import com.best.now.autoclick.utils.Constant
-import com.best.now.autoclick.utils.InPurchaseUtils
-import com.best.now.autoclick.utils.adParentList
-import com.best.now.autoclick.utils.isPurchased
-import com.best.now.autoclick.utils.loadAd
+import com.best.now.autoclick.utils.ImageUtils
+//import com.best.now.autoclick.utils.InPurchaseUtils
+//import com.best.now.autoclick.utils.adParentList
+//import com.best.now.autoclick.utils.isPurchased
+//import com.best.now.autoclick.utils.loadAd
 import com.blankj.utilcode.util.BusUtils
 import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.LogUtils
@@ -31,60 +35,117 @@ class MainActivity : BaseVMActivity() {
         var purchaseTime = 0L
         var productId = ""
         const val BUS_TAG_BUY_STATE_PURCHASED = "BUS_TAG_BUY_STATE_PURCHASED"
-        lateinit var  inPurchaseUtils : InPurchaseUtils
+//        lateinit var  inPurchaseUtils : InPurchaseUtils
     }
+    private val fragmentList = mutableMapOf<Int,Fragment>()
     private val binding by binding<ActivityMainBinding>(R.layout.activity_main)
 
     @SuppressLint("SuspiciousIndentation")
     override fun initView() {
         binding.apply {
-            ivText.setOnClickListener {
-                if (isPurchased(this@MainActivity)){
-                    PermissionX.init(this@MainActivity)
-                        .permissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        .request { allGranted, _, deniedList ->
-                            if (allGranted) {
-                                WebPlayPianoActivity.startActivity(
-                                    this@MainActivity,
-                                    "",
-                                    Constant.URL_TRADITIONAL
-                                )
-                            } else {
-                                ToastUtils.showShort("These permissions are denied: $deniedList")
-                            }
-                        }
-                }
+            iv1.setOnClickListener {
+                changeViewState(1)
             }
-            ivReplace.setOnClickListener {
-                if (isPurchased(this@MainActivity)){
-                    startActivity(Intent(this@MainActivity,QuadrantListActivity::class.java))
-                }
+            iv2.setOnClickListener {
+                changeViewState(2)
             }
-            ivComparison.setOnClickListener {
-                startActivity(Intent(this@MainActivity, SettingActivity::class.java))
+            iv3.setOnClickListener {
+                changeViewState(3)
             }
-        }
-        inPurchaseUtils = InPurchaseUtils(this)
-        inPurchaseUtils.conListener = object :InPurchaseUtils.ConnectListener{
-            override fun connectSuc() {
-                inPurchaseUtils.queryPurchases()
+            iv4.setOnClickListener {
+                changeViewState(4)
             }
-        }
-    }
-    override fun initData() {
-        loadAd(binding.advBanner)
-        if (intent.getBooleanExtra("first",false)&&!purchased){
-            startActivity(Intent(this,SubscribeActivity::class.java))
-        }
-    }
-    @BusUtils.Bus(tag = BUS_TAG_BUY_STATE_PURCHASED)
-    fun purchase(purchase: Purchase) {
-        purchased = true
-        purchaseTime = purchase.purchaseTime
-        productId = GsonUtils.toJson(purchase.skus)
-//        ActionHelper.doAction("buy_success")
 
+        }
+//        inPurchaseUtils = InPurchaseUtils(this)
+//        inPurchaseUtils.conListener = object :InPurchaseUtils.ConnectListener{
+//            override fun connectSuc() {
+//                inPurchaseUtils.queryPurchases()
+//            }
+//        }
     }
+
+    private fun changeViewState(i: Int) {
+        when (i) {
+            1 -> {
+                binding.iv1.setImageResource(R.drawable.home_true)
+                binding.iv2.setImageResource(R.drawable.listen_false)
+                binding.iv3.setImageResource(R.drawable.res_false)
+                binding.iv4.setImageResource(R.drawable.mine_false)
+            }
+
+            2 -> {
+                binding.iv1.setImageResource(R.drawable.home_false)
+                binding.iv2.setImageResource(R.drawable.listen_true)
+                binding.iv3.setImageResource(R.drawable.res_false)
+                binding.iv4.setImageResource(R.drawable.mine_false)
+            }
+
+            3 -> {
+                binding.iv1.setImageResource(R.drawable.home_false)
+                binding.iv2.setImageResource(R.drawable.listen_false)
+                binding.iv3.setImageResource(R.drawable.res_true)
+                binding.iv4.setImageResource(R.drawable.mine_false)
+            }
+
+            4 -> {
+                binding.iv1.setImageResource(R.drawable.home_false)
+                binding.iv2.setImageResource(R.drawable.listen_false)
+                binding.iv3.setImageResource(R.drawable.res_false)
+                binding.iv4.setImageResource(R.drawable.mine_true)
+            }
+        }
+        changeFragment(i)
+    }
+    private fun changeFragment(i:Int){
+       val trans =  supportFragmentManager.beginTransaction()
+       var fragment =  fragmentList[i]
+        fragmentList.forEach{
+            trans.hide(it.value)
+        }
+        if (fragment==null){
+            fragment = when(i){
+                1->{
+                    WebFragment.getInstance()
+                }
+
+                2->{
+                    ListenFragment.getInstance()
+                }
+
+                3->{
+                    ResourceFragment.getInstance()
+                }
+                else->{
+                    MineFragment.getInstance()
+                }
+            }
+            trans.add(R.id.container,fragment).commitAllowingStateLoss()
+            fragmentList[i] = fragment
+        }else{
+            trans.show(fragment).commitAllowingStateLoss()
+        }
+    }
+
+    override fun initData() {
+        if (!getSpValue("hasShowPrivacy",false)){
+            ServeAndPrivatePop(this).showPopupWindow()
+        }
+        changeFragment(1)
+        ActionHelper.doAction("open")
+//        loadAd(binding.advBanner)
+//        if (intent.getBooleanExtra("first",false)&&!purchased){
+//            startActivity(Intent(this,SubscribeActivity::class.java))
+//        }
+    }
+//    @BusUtils.Bus(tag = BUS_TAG_BUY_STATE_PURCHASED)
+//    fun purchase(purchase: Purchase) {
+//        purchased = true
+//        purchaseTime = purchase.purchaseTime
+//        productId = GsonUtils.toJson(purchase.skus)
+////        ActionHelper.doAction("buy_success")
+//
+//    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -105,13 +166,13 @@ class MainActivity : BaseVMActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        BusUtils.register(this)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        BusUtils.unregister(this)
-    }
+//    override fun onStart() {
+//        super.onStart()
+//        BusUtils.register(this)
+//    }
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        BusUtils.unregister(this)
+//    }
 }

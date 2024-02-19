@@ -5,8 +5,8 @@ import android.content.Context
 import android.content.MutableContextWrapper
 import android.webkit.WebView
 import com.best.now.autoclick.utils.AppOpenManager
-import com.best.now.autoclick.utils.loadInterstitialAd
-import com.google.android.gms.ads.MobileAds
+//import com.best.now.autoclick.utils.loadInterstitialAd
+//import com.google.android.gms.ads.MobileAds
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.cache.CacheEntity
 import com.lzy.okgo.cache.CacheMode
@@ -28,10 +28,10 @@ class AutoClickApplication:Application() {
     override fun onCreate() {
         super.onCreate()
         initOkGo()
-        MobileAds.initialize(this) {
-            loadInterstitialAd(this)
-            appOpenManager?.fetchAd()
-        }
+//        MobileAds.initialize(this) {
+//            loadInterstitialAd(this)
+//            appOpenManager?.fetchAd()
+//        }
         appOpenManager = AppOpenManager(this)
     }
     /*** 初始化OkGo */

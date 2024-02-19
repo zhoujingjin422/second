@@ -146,13 +146,13 @@
 
 
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/adv_banner"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#F2F4FE"
-            android:orientation="vertical"
-            android:layout_marginTop="8dp"
-            android:layout_alignParentBottom="true" />
+<!--        <LinearLayout-->
+<!--            android:id="@+id/adv_banner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:background="#F2F4FE"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_alignParentBottom="true" />-->
     </RelativeLayout>
 </layout>

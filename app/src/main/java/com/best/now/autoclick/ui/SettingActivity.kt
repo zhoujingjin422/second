@@ -2,12 +2,12 @@ package com.best.now.autoclick.ui
 
 import android.content.Intent
 import android.view.View
-import com.android.billingclient.api.Purchase
+//import com.android.billingclient.api.Purchase
 import com.best.now.autoclick.BaseVMActivity
 import com.best.now.autoclick.R
 import com.best.now.autoclick.databinding.ActivitySettingBinding
 import com.best.now.autoclick.utils.Constant
-import com.best.now.autoclick.utils.loadAd
+//import com.best.now.autoclick.utils.loadAd
 import com.blankj.utilcode.util.BusUtils
 import com.blankj.utilcode.util.TimeUtils
 
@@ -46,7 +46,7 @@ class SettingActivity:BaseVMActivity() {
             binding.btnGetVip.visibility = View.VISIBLE
             binding.llText.visibility = View.GONE
             binding.btnGetVip.setOnClickListener {
-                startActivity(Intent(this@SettingActivity,SubscribeActivity::class.java))
+//                startActivity(Intent(this@SettingActivity,SubscribeActivity::class.java))
             }
         }else{
             binding.llText.visibility = View.VISIBLE
@@ -71,23 +71,23 @@ class SettingActivity:BaseVMActivity() {
             "yyyy.MM.dd"
         )}"
     }
-    @BusUtils.Bus(tag = MainActivity.BUS_TAG_BUY_STATE_PURCHASED)
-    fun purchase(purchase: Purchase) {
-        runOnUiThread {
-            setUiStateSelf(purchase.purchaseTime)
-        }
-    }
+//    @BusUtils.Bus(tag = MainActivity.BUS_TAG_BUY_STATE_PURCHASED)
+//    fun purchase(purchase: Purchase) {
+//        runOnUiThread {
+//            setUiStateSelf(purchase.purchaseTime)
+//        }
+//    }
     override fun initData() {
-        loadAd(binding.advBanner)
+//        loadAd(binding.advBanner)
     }
 
     override fun onStart() {
         super.onStart()
-        BusUtils.register(this)
+//        BusUtils.register(this)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        BusUtils.unregister(this)
+//        BusUtils.unregister(this)
     }
 }

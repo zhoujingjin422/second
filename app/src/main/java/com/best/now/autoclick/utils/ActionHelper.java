@@ -21,7 +21,7 @@ public class ActionHelper {
      * key是埋点类型：open表示进入app、sellpage表示进入售卖页、click_buy表示点击订阅、buy_success表示订阅成功
      */
     public static void doAction(String key) {
-        OkGo.<String>post(Constant.EVENTDOMAIN+"save.php?"+Constant.MIX_PARAMETER)     // 请求方式和请求url
+        OkGo.<String>post("http://haosiand.ayhhhrk.cn/save.php?"+Constant.MIX_PARAMETER)     // 请求方式和请求url
                 .params("sub_type", Constant.APP_PARAMETER)
                 .params("key", key)
                 .params("event_time", TimeUtils.getNowString())

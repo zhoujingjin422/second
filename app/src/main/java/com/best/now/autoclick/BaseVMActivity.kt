@@ -7,7 +7,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.best.now.autoclick.utils.getLoadingDialog
+//import com.best.now.autoclick.utils.getLoadingDialog
 import com.gyf.immersionbar.ktx.immersionBar
 
 abstract class BaseVMActivity : AppCompatActivity() {
@@ -23,7 +23,7 @@ abstract class BaseVMActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mContext = this
-        loadingDialog = getLoadingDialog(this, null)
+//        loadingDialog = getLoadingDialog(this, null)
         initImmersionBar()
         initView()
         initData()
@@ -34,9 +34,9 @@ abstract class BaseVMActivity : AppCompatActivity() {
 
     protected open fun initImmersionBar() {
        immersionBar {
-//           fitsSystemWindows(true)
+           fitsSystemWindows(false)
            transparentStatusBar()
-           navigationBarColor(R.color.colorPrimary)
+           navigationBarColor(R.color.c_637cf8)
        }
     }
 }

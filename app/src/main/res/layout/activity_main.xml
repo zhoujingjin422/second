@@ -9,62 +9,57 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/main_back">
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+        android:background="@color/white">
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="286dp"
-            android:background="@drawable/shape_corner_home"
-            app:layout_constraintBottom_toTopOf="@id/adv_banner">
-
+            app:layout_constraintBottom_toTopOf="@id/card_bottom"
+            android:layout_height="0dp"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_bottom"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cardCornerRadius="28dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="20dp"
+            app:cardElevation="3dp"
+            app:cardMaxElevation="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_height="56dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="50dp"
-                android:orientation="vertical">
-
+                android:orientation="horizontal">
                 <ImageView
-                    android:id="@+id/iv_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="23dp"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/home_pdf" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:id="@+id/iv_replace"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/image_qulist"
-                        android:layout_weight="1"/>
-                    <ImageView
-                        android:id="@+id/iv_comparison"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/image_setting"
-                        android:layout_weight="1"/>
-                </LinearLayout>
-
+                    android:id="@+id/iv_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/home_true"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/iv_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/listen_false"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/iv_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/res_false"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/iv_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/mine_false"
+                    android:layout_weight="1"/>
             </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-        <LinearLayout
-            android:id="@+id/adv_banner"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#F2F4FE"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

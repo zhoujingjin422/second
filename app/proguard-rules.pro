@@ -199,13 +199,13 @@
 
 -keep public class com.google.android.gms.** { public protected *; }
 
--dontwarn com.locationtracker.plus.data.model.bean.**
--keep class com.locationtracker.plus.data.model.bean.** { *; }
--keep interface com.locationtracker.plus.data.model.bean.** { *; }
+-dontwarn com.best.now.autoclick.data.model.bean.**
+-keep class com.best.now.autoclick.data.model.bean.** { *; }
+-keep interface com.best.now.autoclick.data.model.bean.** { *; }
 
-#-dontwarn com.locationtracker.plus.app.util.**
-#-keep class com.locationtracker.plus.app.util.** { *; }
-#-keep interface com.locationtracker.plus.app.util.** { *; }
+#-dontwarn com.best.now.autoclick.app.util.**
+#-keep class com.best.now.autoclick.app.util.** { *; }
+#-keep interface com.best.now.autoclick.app.util.** { *; }
 
 
 

@@ -37,6 +37,9 @@
     <root-path path="" name="images"/>
 
     <root-path path="." name="root_path"/>
+        <external-path
+            name="external_files"
+            path="." />
 
 </paths>
 

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -36,7 +37,7 @@ class WebPlayPianoActivity : BaseVMActivity() {
             )
         }
     }
-
+private var startUrl:String? = null
 
     @SuppressLint("JavascriptInterface", "SetJavaScriptEnabled")
     override fun initView() {
@@ -58,8 +59,13 @@ class WebPlayPianoActivity : BaseVMActivity() {
                 allowUniversalAccessFromFileURLs = false
                 javaScriptEnabled = true
             }
-            webView.addJavascriptInterface(JavaScriptObject(this@WebPlayPianoActivity),"android")
-            webView.webViewClient = WebViewClient()
+            webView.addJavascriptInterface(JavaScriptObject(this@WebPlayPianoActivity),"Android")
+            webView.webViewClient = object :WebViewClient(){
+                override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                    super.onPageStarted(view, url, favicon)
+                     startUrl = url
+                }
+            }
             webView.webChromeClient = object : WebChromeClient(){
                 override fun onShowFileChooser(
                     webView: WebView?,
@@ -195,11 +201,11 @@ class WebPlayPianoActivity : BaseVMActivity() {
         }
     }
     override fun initData() {
-//        val url = intent.getStringExtra("Url")
-        /*url?.let {
+        val url = intent.getStringExtra("Url")
+        url?.let {
             binding.webView.loadUrl(it)
-        }*/
-        binding.webView.loadUrl(Constant.URL_TRADITIONAL)
+        }
+//        binding.webView.loadUrl(Constant.URL_TRADITIONAL)
     }
 
 
@@ -246,7 +252,7 @@ class WebPlayPianoActivity : BaseVMActivity() {
 
     class JavaScriptObject(private val activity: Activity) {
         @JavascriptInterface
-        fun goback() {
+        fun webClose() {
             activity.finish()
         }
 
@@ -314,5 +320,14 @@ class WebPlayPianoActivity : BaseVMActivity() {
             val matcher = regex.matcher(input)
             return matcher.find()
         }
+    }
+
+    override fun onBackPressed() {
+        if (binding.webView.canGoBack()){
+            binding.webView.goBack()
+            return
+        }
+        super.onBackPressed()
+
     }
 }
